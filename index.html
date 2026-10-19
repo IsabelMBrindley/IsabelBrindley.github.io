@@ -7,170 +7,266 @@
 <meta name="description" content="Mechatronics, Robotics and Biomechanical Engineering student at the Technical University of Munich">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* palette */
-  --cream:#F7F4D5; --forest:#0A3323; --sage:#839958; --rose:#D3968C; --teal:#105666;
-  /* roles (light) */
-  --bg:#FFFFFF; --ink:var(--forest); --link:var(--teal); --accent:var(--rose); --moss:var(--teal);
-  --muted:color-mix(in srgb,var(--forest) 68%,#fff);
-  --line:color-mix(in srgb,var(--forest) 18%,#fff);
-  --panel:color-mix(in srgb,var(--sage) 20%,#fff);
+  --forest:#0A3323; --sage:#839958; --cream:#F7F4D5; --rose:#D3968C; --teal:#105666;
+  --bg:#FFFFFF; --ink:var(--forest);
+  --muted:color-mix(in srgb,var(--forest) 66%,#fff);
+  --line:color-mix(in srgb,var(--forest) 14%,#fff);
+  --grid:color-mix(in srgb,var(--sage) 16%,#fff);
   --head:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
   --body:"Source Serif 4",Georgia,"Times New Roman",serif;
 }
-@media (prefers-color-scheme:dark){
-  :root{
-    --bg:var(--forest); --ink:var(--cream); --link:var(--rose); --accent:var(--rose); --moss:var(--sage);
-    --muted:color-mix(in srgb,var(--cream) 72%,var(--forest));
-    --line:color-mix(in srgb,var(--cream) 20%,var(--forest));
-    --panel:color-mix(in srgb,var(--sage) 22%,var(--forest));
-  }
-}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 var(--body)}
 body:has(dialog[open]){overflow:hidden}
-a{color:var(--link);text-underline-offset:3px}
-a:focus-visible,button:focus-visible{outline:3px solid var(--link);outline-offset:3px}
-.wrap{max-width:960px;margin:0 auto;padding:0 24px}
-nav{display:flex;gap:22px;flex-wrap:wrap;padding:22px 0;font:500 15px var(--head)}
-nav a{color:var(--ink);text-decoration:none}
-nav a:hover{color:var(--link);text-decoration:underline}
-.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;padding:48px 0 72px}
-h1{font:800 clamp(44px,8vw,88px)/.98 var(--head);letter-spacing:-.03em;margin:0 0 20px}
-.lede{font-size:21px;max-width:34ch;margin:0 0 28px}
-.btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn{font:700 15px var(--head);padding:12px 20px;border-radius:6px;text-decoration:none;border:2px solid var(--ink);color:var(--ink);display:inline-block}
-.btn.main{background:var(--ink);color:var(--bg)}
-.btn:hover{border-color:var(--link);color:var(--link)}
-.btn.main:hover{background:var(--link);border-color:var(--link);color:var(--bg)}
-.robot-wrap{margin:0}
-.robot{display:block;width:100%;max-width:340px;height:auto;margin:0 auto;color:var(--moss);cursor:pointer}
-section{padding:56px 0;border-top:1px solid var(--line)}
-h2{font:700 30px/1.1 var(--head);letter-spacing:-.01em;margin:0 0 28px}
-h3{font:700 20px/1.3 var(--head);margin:0}
-#about > p{max-width:72ch;margin:0}
-.panel{background:var(--panel);border-left:4px solid var(--sage);padding:24px 28px;border-radius:0 8px 8px 0}
-.panel h3{font-size:22px;margin-bottom:8px}
-.panel p{margin:0 0 14px;max-width:62ch}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none}
-.tags li{font:500 14px var(--head);border:1px solid var(--sage);padding:4px 12px;border-radius:999px}
+a{color:var(--teal);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:var(--head);margin:0}
 
-/* education and experience: one continuous timeline */
-.rs{margin-top:52px}
-.grp{margin-bottom:44px}
+/* top bar with logos */
+.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
+.top.scrolled{border-bottom-color:var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.logos{display:flex;align-items:center;gap:18px}
+.logos img{display:block;height:34px;width:auto}
+.logos .sep{width:1px;height:28px;background:var(--line)}
+.lgtxt{font:800 22px var(--head);color:#3070B3;letter-spacing:-.02em}
+nav{display:flex;align-items:center;gap:24px;font:500 15px var(--head)}
+nav a{color:var(--ink);text-decoration:none;position:relative;padding:4px 0}
+nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--rose);transform:scaleX(0);transform-origin:left;transition:transform .2s}
+nav a:hover::after,nav a.active::after{transform:scaleX(1)}
+nav .cta{background:var(--forest);color:#fff;padding:9px 16px;border-radius:999px}
+nav .cta::after{display:none}
+nav .cta:hover{background:var(--teal)}
+
+/* hero on graph paper */
+.hero{position:relative;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px;background-position:-1px -1px;border-bottom:1px solid var(--line)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#fff 0,rgba(255,255,255,0) 18%,rgba(255,255,255,0) 82%,#fff 100%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.15fr;gap:24px;align-items:center;padding-top:56px;padding-bottom:64px}
+h1{font-size:clamp(52px,8.4vw,104px);line-height:.92;font-weight:800;letter-spacing:-.035em}
+h1 span{display:block;color:var(--teal)}
+.lede{font-size:21px;line-height:1.5;max-width:30ch;margin:24px 0 32px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font:700 15px var(--head);padding:13px 22px;border-radius:999px;text-decoration:none;border:2px solid var(--forest);color:var(--forest);background:#fff}
+.btn.main{background:var(--forest);color:#fff}
+.btn:hover{border-color:var(--teal);color:var(--teal)}
+.btn.main:hover{background:var(--teal);color:#fff}
+.robot-wrap{margin:0}
+.robot{display:block;width:100%;height:auto;color:var(--teal);cursor:pointer;overflow:visible}
+.callout line{stroke:var(--forest);stroke-width:1.2;stroke-dasharray:3 4}
+.callout circle{fill:var(--rose)}
+.callout .t1{font:700 15px var(--head);fill:var(--forest)}
+.callout .t2{font:500 13px var(--head);fill:var(--muted)}
+.hint{font:500 13px var(--head);color:var(--muted);text-align:center;margin-top:4px}
+
+/* sections: sticky heading on the left */
+section{padding:88px 0;border-bottom:1px solid var(--line)}
+.split{display:grid;grid-template-columns:200px 1fr;gap:48px}
+.side h2{position:sticky;top:104px;font-size:30px;line-height:1.1;letter-spacing:-.01em}
+.side p{position:sticky;top:148px;font:500 14px/1.5 var(--head);color:var(--muted);margin:12px 0 0}
+.intro{font-size:21px;line-height:1.6;max-width:62ch;margin:0 0 40px}
+
+/* highlights bento */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(150px,auto);gap:14px}
+.tile{border-radius:18px;padding:22px;background:var(--cream);position:relative;overflow:hidden;text-decoration:none;color:var(--ink)}
+.tile h3{font-size:14px;font-weight:700;color:var(--teal);margin-bottom:10px}
+.tile p{margin:0;font-size:16px;line-height:1.5}
+.tile.now{grid-column:span 2;grid-row:span 2;background:var(--forest);color:#fff;display:flex;flex-direction:column;justify-content:space-between}
+.tile.now h3{color:var(--rose)}
+.tile.now .big{font:800 clamp(26px,3vw,34px)/1.08 var(--head);letter-spacing:-.02em;margin:0 0 14px}
+.tile.now p{color:color-mix(in srgb,#fff 82%,var(--forest))}
+.legs{width:110px;height:auto;align-self:flex-end;color:var(--rose)}
+.tile.stat .num{font:800 52px/1 var(--head);letter-spacing:-.03em;color:var(--forest);margin-top:8px}
+.tile.stat{background:#fff;border:1.5px solid var(--line)}
+.journey{list-style:none;margin:6px 0 0;padding:0 0 0 18px;position:relative}
+.journey::before{content:"";position:absolute;left:4px;top:8px;bottom:8px;width:2px;background:var(--sage)}
+.journey li{position:relative;font:500 15px/1.35 var(--head);margin-bottom:9px}
+.journey li:last-child{margin-bottom:0;font-weight:700}
+.journey li::before{content:"";position:absolute;left:-18px;top:5px;width:10px;height:10px;border-radius:50%;background:#fff;border:2px solid var(--sage)}
+.journey li:last-child::before{background:var(--rose);border-color:var(--rose)}
+.tile.kag{grid-column:span 2;background:var(--teal);color:#fff;display:block}
+.tile.kag h3{color:var(--cream)}
+.tile.kag p{max-width:26ch;position:relative;z-index:1;font:600 19px/1.35 var(--head)}
+.tile.kag .go{position:relative;z-index:1;display:inline-block;margin-top:12px;font:700 14px var(--head);color:var(--cream)}
+.tile.kag svg{position:absolute;right:-20px;top:-10px;width:62%;height:130%;color:var(--cream);opacity:.5;transition:opacity .3s}
+.tile.kag:hover svg{opacity:.85}
+
+/* timeline with scroll progress */
+.grp{margin-bottom:56px}
 .grp:last-child{margin-bottom:0}
-.grp > h3{font:700 13px var(--head);letter-spacing:.14em;text-transform:uppercase;color:var(--link);margin:0 0 20px}
-.e{position:relative;padding:0 0 28px 28px;border-left:2px solid var(--line)}
-.e:last-child{padding-bottom:0;border-left-color:transparent}
-.e::before{content:"";position:absolute;left:-7px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
-.e.s{padding-bottom:14px}
+.grp > h3{font-size:22px;letter-spacing:-.01em;margin:0 0 24px}
+.tl{position:relative;padding-left:34px}
+.tl::before,.tl .fill{content:"";position:absolute;left:5px;top:8px;width:2px;bottom:8px;background:var(--line)}
+.tl .fill{background:var(--teal);bottom:auto;height:0}
+.e{position:relative;padding-bottom:34px}
+.e:last-child{padding-bottom:0}
+.e::before{content:"";position:absolute;left:-34px;top:7px;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid color-mix(in srgb,var(--forest) 30%,#fff);transition:background .25s,border-color .25s,transform .25s}
+.e.on::before{background:var(--rose);border-color:var(--rose);transform:scale(1.15)}
+.e.s{padding-bottom:12px}
 .r{display:flex;justify-content:space-between;align-items:baseline;gap:2px 16px;flex-wrap:wrap}
-.r b{font:700 18px/1.4 var(--head)}
-.r span{font:500 15px var(--head);color:var(--muted);white-space:nowrap}
+.r b{font:700 19px/1.35 var(--head)}
+.r span{font:500 14px var(--head);color:var(--teal);background:color-mix(in srgb,var(--teal) 8%,#fff);padding:3px 10px;border-radius:999px;white-space:nowrap}
 .r i{font-size:16px;color:var(--muted)}
 .r + .r{margin-top:2px}
-.e p{margin:10px 0 0;max-width:72ch}
-.e ul{margin:10px 0 0;padding-left:20px;max-width:72ch}
+.e p{margin:10px 0 0;max-width:68ch}
+.e ul{margin:10px 0 0;padding-left:20px;max-width:68ch}
 .e li{margin-bottom:6px}
+.e li::marker{color:var(--sage)}
 .e li:last-child{margin-bottom:0}
-.org{display:flex;align-items:center;gap:12px}
-.logo{display:block;height:34px;width:auto;background:#fff;padding:4px 8px;border-radius:4px}
-.plain{padding-left:28px;border-left:2px solid transparent}
-.plain p{margin:0 0 8px}
-.plain p:last-child{margin-bottom:0}
+.e.s .r b{font-size:17px;font-weight:500}
 
-/* institution tags */
-.insts{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0 0 28px;padding:0}
-.inst{display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 16px 0 12px;background:#fff;color:#16201B;border:1px solid var(--sage);border-radius:999px;font:700 14px var(--head);text-decoration:none}
-.inst img{height:28px;width:auto;display:block}
-.inst .nm{display:none}
-.inst.nologo .nm{display:inline}
-.inst.nologo img{display:none}
-.inst:hover{border-color:var(--accent)}
-
-/* skills and interests */
-.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding-left:28px}
-.sk{background:var(--panel);border-left:4px solid var(--sage);border-radius:0 8px 8px 0;padding:18px 20px}
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.sk{background:var(--cream);border-radius:18px;padding:22px}
 .sk.wide{grid-column:1/-1}
-.sk h4{font:700 13px var(--head);letter-spacing:.12em;text-transform:uppercase;color:var(--link);margin:0 0 12px}
+.sk h4{font-size:14px;font-weight:700;color:var(--teal);margin:0 0 14px}
 .chips,.ints,.lang{list-style:none;margin:0;padding:0}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips li{font:500 14px var(--head);background:var(--bg);border:1px solid var(--sage);border-radius:999px;padding:5px 14px}
-.chips li:hover{border-color:var(--accent);background:var(--accent);color:var(--forest)}
-.lang li{display:grid;grid-template-columns:1fr auto;gap:4px 12px;margin-bottom:12px;font:500 15px var(--head)}
+.chips li{font:500 14px var(--head);background:#fff;border:1px solid color-mix(in srgb,var(--sage) 55%,#fff);border-radius:999px;padding:6px 14px;transition:background .15s,border-color .15s}
+.chips li:hover{border-color:var(--rose);background:var(--rose)}
+.lang li{display:grid;grid-template-columns:1fr auto;gap:6px 12px;margin-bottom:14px;font:500 15px var(--head)}
 .lang li:last-child{margin-bottom:0}
 .lang em{font-style:normal;color:var(--muted);font-size:14px}
-.bar{grid-column:1/-1;display:block;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.bar{grid-column:1/-1;display:block;height:6px;border-radius:3px;background:#fff;overflow:hidden}
 .bar::after{content:"";display:block;height:100%;width:var(--w);background:var(--sage);border-radius:3px}
-.ints{display:flex;flex-wrap:wrap;gap:12px}
-.ints li{display:flex;align-items:center;gap:10px;font:500 15px var(--head);background:var(--bg);border:1px solid var(--sage);border-radius:10px;padding:10px 16px}
-.ints svg{width:22px;height:22px;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-@media (max-width:720px){.skills{grid-template-columns:1fr;padding-left:20px}}
+.ints{display:flex;flex-wrap:wrap;gap:10px}
+.ints li{display:flex;align-items:center;gap:10px;font:500 15px var(--head);background:#fff;border-radius:12px;padding:10px 16px}
+.ints svg{width:22px;height:22px;fill:none;stroke:var(--rose);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* thesis */
+.thesis{display:grid;grid-template-columns:1.25fr .75fr;gap:0;border-radius:22px;overflow:hidden;border:1.5px solid var(--line)}
+.thesis .txt{padding:34px}
+.thesis h3{font-size:26px;line-height:1.2;letter-spacing:-.01em;margin-bottom:10px}
+.thesis .meta{font:500 14px var(--head);color:var(--muted);margin:0 0 18px}
+.thesis p{margin:0 0 16px;max-width:60ch}
+.thesis .art{background:var(--teal);color:var(--cream);display:flex;align-items:center;justify-content:center;padding:20px;min-height:260px}
+.thesis .art svg{width:100%;height:100%;max-height:340px}
+.thesis .art figcaption{font:500 13px var(--head)}
+.thesis .art figure{margin:0;width:100%;text-align:center}
 
 /* projects */
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
-.card{all:unset;box-sizing:border-box;cursor:pointer;display:block;background:var(--panel);border-left:4px solid var(--sage);border-radius:0 8px 8px 0;padding:20px 22px}
-.card:hover{border-left-color:var(--accent)}
-.card:focus-visible{outline:3px solid var(--link);outline-offset:3px}
-.card .when{font:500 14px var(--head);color:var(--muted)}
-.card h3{margin:4px 0 8px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:22px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--forest);transform:translateY(-3px)}
+.card:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.card.feat{grid-column:span 2;background:var(--forest);color:#fff;border-color:var(--forest)}
+.card.feat .when,.card.feat p{color:color-mix(in srgb,#fff 80%,var(--forest))}
+.card.feat .more{color:var(--rose)}
+.card .when{font:500 13px var(--head);color:var(--muted)}
+.card h3{font-size:20px;line-height:1.25;margin:6px 0 8px}
+.card.feat h3{font-size:28px;letter-spacing:-.01em}
 .card p{margin:0;font-size:16px;line-height:1.5}
-.card .more{display:block;margin-top:12px;font:700 14px var(--head);color:var(--link)}
-dialog{background:var(--bg);color:var(--ink);border:2px solid var(--ink);border-radius:8px;padding:28px;width:min(620px,92vw);max-height:86vh;overflow:auto}
-dialog::backdrop{background:rgba(10,51,35,.6)}
-dialog h3{font-size:26px;margin-bottom:4px}
-dialog .meta{font:500 15px var(--head);color:var(--muted);margin:0 0 16px}
+.card .more{margin-top:auto;padding-top:16px;font:700 14px var(--head);color:var(--teal)}
+dialog{background:#fff;color:var(--ink);border:0;border-radius:22px;padding:32px;width:min(640px,92vw);max-height:86vh;overflow:auto;box-shadow:0 30px 80px rgba(10,51,35,.3)}
+dialog::backdrop{background:rgba(10,51,35,.55);backdrop-filter:blur(3px)}
+dialog h3{font-size:28px;letter-spacing:-.01em;margin-bottom:6px;padding-right:90px}
+dialog .meta{font:500 15px var(--head);color:var(--muted);margin:0 0 18px}
 dialog p{margin:0 0 14px}
-.x{float:right;font:700 15px var(--head);background:none;color:var(--ink);border:2px solid var(--ink);border-radius:6px;padding:6px 14px;cursor:pointer;margin-left:16px}
-.x:hover{border-color:var(--link);color:var(--link)}
+.x{position:absolute;right:24px;top:24px;font:700 14px var(--head);background:var(--cream);color:var(--ink);border:0;border-radius:999px;padding:8px 16px;cursor:pointer}
+.x:hover{background:var(--rose)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:0;list-style:none}
+.tags li{font:500 14px var(--head);background:var(--cream);padding:5px 12px;border-radius:999px}
 
-.contact p{margin:0}
-footer{padding:40px 0 64px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
+/* contact: dark band */
+.contact{background:var(--forest);color:#fff;border:0;padding:96px 0 40px}
+.contact h2{font-size:clamp(40px,6vw,72px);line-height:1;letter-spacing:-.03em;margin-bottom:28px}
+.contact .mail{display:inline-block;font:700 clamp(20px,3vw,30px) var(--head);color:var(--rose);text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:2px;margin-bottom:36px}
+.contact .mail:hover{color:var(--cream)}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;border-top:1px solid rgba(255,255,255,.18);padding-top:28px}
+.cgrid h4{font-size:13px;font-weight:700;color:var(--sage);margin-bottom:6px}
+.cgrid p{margin:0;font:500 17px/1.5 var(--head)}
+footer{margin-top:72px;font:500 14px var(--head);color:color-mix(in srgb,#fff 55%,var(--forest))}
 
-@media (max-width:720px){
-  .hero{grid-template-columns:1fr}
-  .robot{max-width:260px}
-  .r span{white-space:normal}
-  .logo{height:28px}
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;padding-top:36px}
+  .callout{display:none}
+  .robot{max-width:300px;margin:0 auto}
+  .split{grid-template-columns:1fr;gap:20px}
+  .side h2,.side p{position:static}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .cards{grid-template-columns:1fr 1fr}
+  .thesis{grid-template-columns:1fr}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (max-width:640px){
+  .top .wrap{height:auto;flex-direction:column;align-items:flex-start;gap:8px;padding-top:10px;padding-bottom:10px}
+  .logos img{height:26px}
+  nav{gap:16px;font-size:14px;overflow-x:auto;max-width:100%}
+  nav .cta{display:none}
+  section{padding:64px 0}
+  .bento,.skills,.cards,.cgrid{grid-template-columns:1fr}
+  .tile.now,.tile.kag,.card.feat{grid-column:auto}
+  .tile.now{grid-row:auto}
+  .r span{white-space:normal}
+  .thesis .txt{padding:24px}
+  html{scroll-padding-top:110px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <nav aria-label="Main">
-    <a href="#about">About</a>
-    <a href="#thesis">Thesis</a>
-    <a href="#projects">Projects</a>
-    <a href="#resume">Resume</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<header class="top" id="top">
+  <div class="wrap">
+    <div class="logos">
+      <img src="tum-logo.svg" alt="Technical University of Munich" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='tum-logo.png'}else{var s=document.createElement('span');s.className='lgtxt';s.textContent='TUM';this.replaceWith(s)}">
+      <span class="sep" aria-hidden="true"></span>
+      <img src="monash-logo.png" alt="Monash University">
+    </div>
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#thesis">Thesis</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a class="cta" href="resume.pdf">Resume</a>
+    </nav>
+  </div>
+</header>
 
-  <header class="hero">
+<div class="hero">
+  <div class="wrap">
     <div>
-      <h1>Isabel Brindley</h1>
+      <h1>Isabel <span>Brindley</span></h1>
       <p class="lede">Mechatronics, Robotics and Biomechanical Engineering student at the Technical University of Munich</p>
-      <ul class="insts" aria-label="Institutions">
-        <li class="inst nologo" id="tumtag"><img src="tum-logo.png" alt="Technical University of Munich" onload="this.parentNode.classList.remove('nologo')"><span class="nm">Technical University of Munich</span></li>
-        <li class="inst"><img src="monash-logo.svg" alt="Monash University"></li>
-      </ul>
       <div class="btns">
         <a class="btn main" href="resume.pdf">Download resume</a>
+        <a class="btn" href="#projects">See projects</a>
       </div>
     </div>
     <figure class="robot-wrap">
-      <svg id="robot" class="robot" viewBox="0 0 300 340" role="button" tabindex="0" aria-label="Friendly robot. Press to make it wave.">
-        <g fill="var(--bg)" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+      <svg id="robot" class="robot" viewBox="0 0 560 380" role="button" tabindex="0" aria-label="Friendly robot with labels. Press to make it wave.">
+        <g class="callout" aria-hidden="true">
+          <line x1="228" y1="96" x2="150" y2="62"/><circle cx="150" cy="62" r="4"/>
+          <text class="t1" x="140" y="58" text-anchor="end">Physics BSc</text>
+          <text class="t2" x="140" y="76" text-anchor="end">Monash University</text>
+
+          <line x1="270" y1="184" x2="150" y2="196"/><circle cx="150" cy="196" r="4"/>
+          <text class="t1" x="140" y="192" text-anchor="end">Heart set on</text>
+          <text class="t2" x="140" y="210" text-anchor="end">caregiving robots</text>
+
+          <line x1="270" y1="40" x2="392" y2="30"/><circle cx="392" cy="30" r="4"/>
+          <text class="t1" x="402" y="28">Based in Munich</text>
+          <text class="t2" x="402" y="46">via Melbourne &amp; Groningen</text>
+
+          <line x1="290" y1="302" x2="392" y2="300"/><circle cx="392" cy="300" r="4"/>
+          <text class="t1" x="402" y="298">Walking robots</text>
+          <text class="t2" x="402" y="316">Robo-Dodo lab, TUM</text>
+        </g>
+        <g transform="translate(120 20)" fill="#fff" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M132 232 V282 V324 M168 232 V282 V324" fill="none" stroke-width="10"/>
           <circle cx="132" cy="282" r="7"/><circle cx="168" cy="282" r="7"/>
           <rect x="112" y="320" width="38" height="12" rx="6"/><rect x="150" y="320" width="38" height="12" rx="6"/>
           <rect x="116" y="222" width="68" height="16" rx="8"/>
           <rect x="108" y="130" width="84" height="98" rx="16"/>
-          <circle cx="150" cy="164" r="9" fill="var(--accent)" stroke="none"/>
+          <circle cx="150" cy="164" r="9" fill="var(--rose)" stroke="none"/>
           <rect x="128" y="188" width="44" height="22" rx="4"/>
           <path d="M138 188 V210 M150 188 V210 M162 188 V210" fill="none" stroke-width="3"/>
           <g id="ra"><path d="M0 0 V52" fill="none" stroke-width="10"/><circle cx="0" cy="0" r="8"/>
@@ -179,144 +275,206 @@ footer{padding:40px 0 64px;border-top:1px solid var(--line);color:var(--muted);f
             <g id="lf"><path d="M0 0 V48" fill="none" stroke-width="10"/><circle cx="0" cy="0" r="7"/><circle cx="0" cy="48" r="9"/></g></g>
           <path d="M150 118 V132" fill="none" stroke-width="8"/>
           <g id="head">
-            <path d="M150 48 V30" fill="none"/><circle cx="150" cy="22" r="7" fill="var(--accent)"/>
+            <path d="M150 48 V30" fill="none"/><circle cx="150" cy="22" r="7" fill="var(--rose)"/>
             <rect x="105" y="48" width="90" height="70" rx="18"/>
             <circle cx="130" cy="82" r="13"/><circle cx="170" cy="82" r="13"/>
-            <circle id="pl" cx="130" cy="82" r="5.5" fill="var(--accent)" stroke="none"/>
-            <circle id="pr" cx="170" cy="82" r="5.5" fill="var(--accent)" stroke="none"/>
+            <circle id="pl" cx="130" cy="82" r="5.5" fill="var(--rose)" stroke="none"/>
+            <circle id="pr" cx="170" cy="82" r="5.5" fill="var(--rose)" stroke="none"/>
             <path d="M136 103 Q150 111 164 103" fill="none" stroke-width="4"/>
           </g>
         </g>
       </svg>
+      <figcaption class="hint">Tap the robot to say hello</figcaption>
     </figure>
-  </header>
+  </div>
+</div>
 
+<main>
   <section id="about">
-    <h2>About</h2>
-    <p>I’m an Australian physics graduate who moved to Munich to study Mechatronics, Robotics and Biomechanical Engineering (MRBE) at TUM. I have hands-on experience across power electronics, battery systems, hardware prototyping and CAD, gained through a startup developing an AI wearable for elderly care, a multidisciplinary student engineering team and a professional engineering internship. Strong foundation in experimental design, programming and technical writing, with experience leading and coordinating teams. I’m seeking to apply this to high-tech robotics, with a particular interest in biomechatronics and impact-driven applications such as caregiving or environmental purposes.</p>
+    <div class="wrap split">
+      <div class="side"><h2>About</h2></div>
+      <div>
+        <p class="intro">I’m an Australian physics graduate who moved to Munich to study Mechatronics, Robotics and Biomechanical Engineering (MRBE) at TUM. I have hands-on experience across power electronics, battery systems, hardware prototyping and CAD, gained through a startup developing an AI wearable for elderly care, a multidisciplinary student engineering team and a professional engineering internship. Strong foundation in experimental design, programming and technical writing, with experience leading and coordinating teams. I’m seeking to apply this to high-tech robotics, with a particular interest in biomechatronics and impact-driven applications such as caregiving or environmental purposes.</p>
 
-    <div class="rs" id="resume">
-      <div class="grp">
-        <h3>Education</h3>
-        <div class="e">
-          <div class="r"><div class="org"><b>Technical University of Munich</b></div><span>Oct. 2026 – Present</span></div>
-          <div class="r"><i>MSc. Mechatronics, Robotics and Biomechanical Engineering</i><i>Munich, Germany</i></div>
-          <ul>
-            <li>Pursuing topics in Robotics, Control Theory, AI, Dynamics, Programming and Biomechanical engineering to become a competent all-rounder engineer.</li>
-            <li>Selected for the Robo-Dodo lab course, working on simulation and control of a bipedal walking robot.</li>
-          </ul>
-        </div>
-        <div class="e">
-          <div class="r"><div class="org"><b>Monash University</b></div><span>Jan. 2023 – Jun. 2026</span></div>
-          <div class="r"><i>Bachelor of Science (Physics)</i><i>Melbourne, Australia</i></div>
-          <ul>
-            <li>WAM: 81/100 | GPA: 3.4/4.0</li>
-            <li>Areas of study: Physics, Mechtronics Engineering, Computer Science, Mathematics, Astronomy</li>
-            <li>Undertook a research project under the supervision of Dr. Mark Edmonds in materials physics. In my project, titled <i>Understanding the growth and electronic properties of rare earth Kagome metals</i>, I grew thin film samples of rare-earth Kagome metal TbMn<sub>6</sub>Sn<sub>6</sub> with Molecular Beam Epitaxy and analysed their chemical composition and electrical properties using various Photoemission Spectroscopy techniques.</li>
-          </ul>
-        </div>
-        <div class="e">
-          <div class="r"><b>Rijksuniversiteit Groningen (Academic Exchange)</b><span>Jan. 2025 – Jun. 2025</span></div>
-          <div class="r"><i>Bachelor of Science</i><i>Groningen, Netherlands</i></div>
-          <ul><li>Coursework in Particle Physics, Mathematics and Astronomy.</li></ul>
-        </div>
-        <div class="e">
-          <div class="r"><b>Melbourne Girls Grammar</b><span>Graduated Nov. 2022</span></div>
-          <div class="r"><i>VCE</i><i>Melbourne, Australia</i></div>
-          <ul><li>99.65/100.00 ATAR</li></ul>
-        </div>
-      </div>
-
-      <div class="grp">
-        <h3>Professional Experience</h3>
-        <div class="e">
-          <div class="r"><b>Electrical Engineer (Student Team)</b><span>Mar. 2026 – Jun. 2026</span></div>
-          <div class="r"><i>MHAB</i><i>Melbourne, Australia</i></div>
-          <p>During my time with MHAB, a multi-disciplinary student team, I contributed to the power engineering sub-division in developing a flight-ready product. I designed LTspice schematics, including a buck converter, and researched battery configurations for low-pressure, low-temperature environments, weighing safety, cost and efficiency. I also developed battery safety testing experiments, applying physics principles to the risks of operating in extreme conditions.</p>
-        </div>
-        <div class="e">
-          <div class="r"><b>Engineer (Hardware &amp; Product Development)</b><span>Nov. 2025 – Mar. 2026</span></div>
-          <div class="r"><i>Idiom</i><i>Melbourne, Australia</i></div>
-          <p>Worked at the forefront of Idiom, an early-stage startup developing an AI wearable for elderly care. I analysed AI software codebases, researched battery configurations and designed a prototype shell. I also explored the market with the founder and discussed business ideas, contributing to early product and business direction.</p>
-        </div>
-        <div class="e">
-          <div class="r"><b>Engineering Internship</b><span>May 2024</span></div>
-          <div class="r"><i>Traffix Group</i><i>Melbourne, Australia</i></div>
-          <p>To explore a career pathway in Civil Engineering, I undertook an internship with Traffix Group, a traffic engineering consultancy. I designed carparks and developed swept paths using CAD software. I conducted on-site traffic surveys for new housing developments and contributed to traffic reports for proposed developments and infrastructure projects.</p>
-        </div>
-        <div class="e">
-          <div class="r"><b>Outreach Manager (Student Team)</b><span>Mar. 2023 – Jun. 2024</span></div>
-          <div class="r"><i>Precious Plastics Monash</i><i>Melbourne, Australia</i></div>
-          <p>Starting as a team-member and then working up to manager, I was part of a multidisciplinary team of eight students, promoting sustainability and recycling through engineering-based workshops. I delivered presentations to primary, secondary and university audiences, while planning events, managing budgets and liaising with stakeholders across the Monash community.</p>
-        </div>
-      </div>
-
-      <div class="grp">
-        <h3>Other Experience</h3>
-        <div class="e s"><div class="r"><b>Store Assistant, ALDI</b><span>Oct. 2023 – Nov. 2025</span></div></div>
-        <div class="e s"><div class="r"><b>Waitress, North Point Cafe</b><span>Nov. 2021 – Jan. 2023</span></div></div>
-        <div class="e s"><div class="r"><b>Team Member, Grill’d</b><span>Jun. 2020 – Nov. 2021</span></div></div>
-      </div>
-
-      <div class="grp">
-        <h3>Skills &amp; Interests</h3>
-        <div class="skills">
-          <div class="sk"><h4>Programming</h4><ul class="chips"><li>Python</li><li>C</li><li>C++</li><li>MATLAB</li><li>Wolfram Language</li><li>LaTeX</li></ul></div>
-          <div class="sk"><h4>Hardware &amp; Embedded</h4><ul class="chips"><li>Verilog</li><li>MIPS Assembly</li><li>Arduino</li></ul></div>
-          <div class="sk"><h4>Software</h4><ul class="chips"><li>SolidWorks</li><li>Microsoft 365</li></ul></div>
-          <div class="sk"><h4>Languages</h4>
-            <ul class="lang">
-              <li><span>English</span><em>Native</em><i class="bar" style="--w:100%"></i></li>
-              <li><span>French</span><em>B2</em><i class="bar" style="--w:66%"></i></li>
+        <div class="bento">
+          <div class="tile now">
+            <div>
+              <h3>Right now</h3>
+              <p class="big">MSc in Mechatronics, Robotics and Biomechanical Engineering at TUM</p>
+              <p>Selected for the Robo-Dodo lab course, working on simulation and control of a bipedal walking robot.</p>
+            </div>
+            <svg class="legs" viewBox="0 0 120 80" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M30 8 L44 8 M44 8 L36 40 L50 70 M44 8 L62 36 L58 70 M44 70 L60 70 M52 70 L70 70"/><circle cx="36" cy="40" r="4" fill="currentColor"/><circle cx="62" cy="36" r="4" fill="currentColor"/></svg>
+          </div>
+          <div class="tile stat">
+            <h3>ATAR</h3>
+            <div class="num">99.65</div>
+          </div>
+          <div class="tile">
+            <h3>The route here</h3>
+            <ul class="journey">
+              <li>Melbourne</li>
+              <li>Groningen</li>
+              <li>Munich</li>
             </ul>
           </div>
-          <div class="sk wide"><h4>Interests</h4>
-            <ul class="ints">
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20l6-10 4 6 3-4 5 8z"/><circle cx="17" cy="6" r="2"/></svg>Bouldering</li>
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 20l7-13 4 7 3-4 6 10z"/></svg>Hiking</li>
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>Travelling</li>
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5c4-1 7 0 9 2 2-2 5-3 9-2v14c-4-1-7 0-9 2-2-2-5-3-9-2z M12 7v14"/></svg>Reading</li>
-            </ul>
+          <a class="tile kag" href="#thesis">
+            <h3>Research</h3>
+            <p>Growing thin films of a Kagome metal, one atomic layer at a time</p>
+            <span class="go">Read about my thesis</span>
+            <svg class="kagome" viewBox="0 0 300 220" aria-hidden="true"></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap split">
+      <div class="side"><h2>Experience</h2><p>Education and work, most recent first.</p></div>
+      <div id="resume">
+        <div class="grp">
+          <h3>Education</h3>
+          <div class="tl"><i class="fill"></i>
+            <div class="e">
+              <div class="r"><b>Technical University of Munich</b><span>Oct. 2026 – Present</span></div>
+              <div class="r"><i>MSc. Mechatronics, Robotics and Biomechanical Engineering</i><i>Munich, Germany</i></div>
+              <ul>
+                <li>Pursuing topics in Robotics, Control Theory, AI, Dynamics, Programming and Biomechanical engineering to become a competent all-rounder engineer.</li>
+                <li>Selected for the Robo-Dodo lab course, working on simulation and control of a bipedal walking robot.</li>
+              </ul>
+            </div>
+            <div class="e">
+              <div class="r"><b>Monash University</b><span>Jan. 2023 – Jun. 2026</span></div>
+              <div class="r"><i>Bachelor of Science (Physics)</i><i>Melbourne, Australia</i></div>
+              <ul>
+                <li>WAM: 81/100 | GPA: 3.4/4.0</li>
+                <li>Areas of study: Physics, Mechtronics Engineering, Computer Science, Mathematics, Astronomy</li>
+                <li>Undertook a research project under the supervision of Dr. Mark Edmonds in materials physics. In my project, titled <i>Understanding the growth and electronic properties of rare earth Kagome metals</i>, I grew thin film samples of rare-earth Kagome metal TbMn<sub>6</sub>Sn<sub>6</sub> with Molecular Beam Epitaxy and analysed their chemical composition and electrical properties using various Photoemission Spectroscopy techniques.</li>
+              </ul>
+            </div>
+            <div class="e">
+              <div class="r"><b>Rijksuniversiteit Groningen (Academic Exchange)</b><span>Jan. 2025 – Jun. 2025</span></div>
+              <div class="r"><i>Bachelor of Science</i><i>Groningen, Netherlands</i></div>
+              <ul><li>Coursework in Particle Physics, Mathematics and Astronomy.</li></ul>
+            </div>
+            <div class="e">
+              <div class="r"><b>Melbourne Girls Grammar</b><span>Graduated Nov. 2022</span></div>
+              <div class="r"><i>VCE</i><i>Melbourne, Australia</i></div>
+              <ul><li>99.65/100.00 ATAR</li></ul>
+            </div>
           </div>
+        </div>
+
+        <div class="grp">
+          <h3>Professional Experience</h3>
+          <div class="tl"><i class="fill"></i>
+            <div class="e">
+              <div class="r"><b>Electrical Engineer (Student Team)</b><span>Mar. 2026 – Jun. 2026</span></div>
+              <div class="r"><i>MHAB</i><i>Melbourne, Australia</i></div>
+              <p>During my time with MHAB, a multi-disciplinary student team, I contributed to the power engineering sub-division in developing a flight-ready product. I designed LTspice schematics, including a buck converter, and researched battery configurations for low-pressure, low-temperature environments, weighing safety, cost and efficiency. I also developed battery safety testing experiments, applying physics principles to the risks of operating in extreme conditions.</p>
+            </div>
+            <div class="e">
+              <div class="r"><b>Engineer (Hardware &amp; Product Development)</b><span>Nov. 2025 – Mar. 2026</span></div>
+              <div class="r"><i>Idiom</i><i>Melbourne, Australia</i></div>
+              <p>Worked at the forefront of Idiom, an early-stage startup developing an AI wearable for elderly care. I analysed AI software codebases, researched battery configurations and designed a prototype shell. I also explored the market with the founder and discussed business ideas, contributing to early product and business direction.</p>
+            </div>
+            <div class="e">
+              <div class="r"><b>Engineering Internship</b><span>May 2024</span></div>
+              <div class="r"><i>Traffix Group</i><i>Melbourne, Australia</i></div>
+              <p>To explore a career pathway in Civil Engineering, I undertook an internship with Traffix Group, a traffic engineering consultancy. I designed carparks and developed swept paths using CAD software. I conducted on-site traffic surveys for new housing developments and contributed to traffic reports for proposed developments and infrastructure projects.</p>
+            </div>
+            <div class="e">
+              <div class="r"><b>Outreach Manager (Student Team)</b><span>Mar. 2023 – Jun. 2024</span></div>
+              <div class="r"><i>Precious Plastics Monash</i><i>Melbourne, Australia</i></div>
+              <p>Starting as a team-member and then working up to manager, I was part of a multidisciplinary team of eight students, promoting sustainability and recycling through engineering-based workshops. I delivered presentations to primary, secondary and university audiences, while planning events, managing budgets and liaising with stakeholders across the Monash community.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grp">
+          <h3>Other Experience</h3>
+          <div class="tl"><i class="fill"></i>
+            <div class="e s"><div class="r"><b>Store Assistant, ALDI</b><span>Oct. 2023 – Nov. 2025</span></div></div>
+            <div class="e s"><div class="r"><b>Waitress, North Point Cafe</b><span>Nov. 2021 – Jan. 2023</span></div></div>
+            <div class="e s"><div class="r"><b>Team Member, Grill’d</b><span>Jun. 2020 – Nov. 2021</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap split">
+      <div class="side"><h2>Skills &amp; Interests</h2></div>
+      <div class="skills">
+        <div class="sk"><h4>Programming</h4><ul class="chips"><li>Python</li><li>C</li><li>C++</li><li>MATLAB</li><li>Wolfram Language</li><li>LaTeX</li></ul></div>
+        <div class="sk"><h4>Hardware &amp; Embedded</h4><ul class="chips"><li>Verilog</li><li>MIPS Assembly</li><li>Arduino</li></ul></div>
+        <div class="sk"><h4>Software</h4><ul class="chips"><li>SolidWorks</li><li>Microsoft 365</li></ul></div>
+        <div class="sk"><h4>Languages</h4>
+          <ul class="lang">
+            <li><span>English</span><em>Native</em><i class="bar" style="--w:100%"></i></li>
+            <li><span>French</span><em>B2</em><i class="bar" style="--w:66%"></i></li>
+          </ul>
+        </div>
+        <div class="sk wide"><h4>Interests</h4>
+          <ul class="ints">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20l6-10 4 6 3-4 5 8z"/><circle cx="17" cy="6" r="2"/></svg>Bouldering</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 20l7-13 4 7 3-4 6 10z"/></svg>Hiking</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>Travelling</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5c4-1 7 0 9 2 2-2 5-3 9-2v14c-4-1-7 0-9 2-2-2-5-3-9-2z M12 7v14"/></svg>Reading</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
   <section id="thesis">
-    <h2>Thesis</h2>
-    <div class="panel">
-      <h3>Understanding the growth and electronic properties of rare earth Kagome metals</h3>
-      <p>Physics research project (PHS3350), Monash University, supervised by Dr. Mark Edmonds, November 2025.</p>
-      <p>Kagome metals have atoms arranged in a woven pattern of triangles and hexagons, which makes their electrons behave in unusual ways. This could help build faster, lower-energy computers. I grew ultra-thin crystal films of one of these metals, TbMn<sub>6</sub>Sn<sub>6</sub>, then studied them at the Australian Synchrotron using X-ray and angle-resolved photoemission spectroscopy. The measurements showed early signs of the two features the theory predicts, and an unexpected chemical signal that needs more work to explain.</p>
-      <a href="Understanding_the_growth_and_electronic_properties_of_rare_earth_Kagome_metals.pdf">Read the full thesis (PDF)</a>
+    <div class="wrap split">
+      <div class="side"><h2>Thesis</h2></div>
+      <div class="thesis">
+        <div class="txt">
+          <h3>Understanding the growth and electronic properties of rare earth Kagome metals</h3>
+          <p class="meta">Physics research project (PHS3350), Monash University, supervised by Dr. Mark Edmonds, November 2025</p>
+          <p>Kagome metals have atoms arranged in a woven pattern of triangles and hexagons, which makes their electrons behave in unusual ways. This could help build faster, lower-energy computers. I grew ultra-thin crystal films of one of these metals, TbMn<sub>6</sub>Sn<sub>6</sub>, then studied them at the Australian Synchrotron using X-ray and angle-resolved photoemission spectroscopy. The measurements showed early signs of the two features the theory predicts, and an unexpected chemical signal that needs more work to explain.</p>
+          <a class="btn main" href="Understanding_the_growth_and_electronic_properties_of_rare_earth_Kagome_metals.pdf">Read the full thesis (PDF)</a>
+        </div>
+        <div class="art">
+          <figure>
+            <svg class="kagome" viewBox="0 0 300 300" aria-hidden="true"></svg>
+            <figcaption>The Kagome lattice: corner-sharing triangles around hexagons</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
   </section>
 
   <section id="projects">
-    <h2>Projects</h2>
-    <div class="cards">
-      <button class="card" data-id="dodo"><span class="when">2026 – present</span><h3>Bipedal walking robot</h3><p>Simulation and control of a two-legged robot at TUM.</p><span class="more">Open details</span></button>
-      <button class="card" data-id="mhab"><span class="when">Mar. – Jun. 2026</span><h3>Power system for a flight-ready product</h3><p>Circuit design and battery safety testing for extreme conditions.</p><span class="more">Open details</span></button>
-      <button class="card" data-id="muon"><span class="when">Monash University</span><h3>Muon lifetime experiment</h3><p>Measuring how long muons live, and what that says about the weak force.</p><span class="more">Open details</span></button>
-      <button class="card" data-id="stm"><span class="when">Monash University</span><h3>Embedded relay chain</h3><p>Microcontrollers passing messages to each other, with a Python interface.</p><span class="more">Open details</span></button>
-      <button class="card" data-id="idiom"><span class="when">Nov. 2025 – Mar. 2026</span><h3>Wearable prototype shell</h3><p>Hardware design for an AI wearable for elderly care.</p><span class="more">Open details</span></button>
-      <button class="card" data-id="pp"><span class="when">Mar. 2023 – Jun. 2024</span><h3>Sustainability workshops</h3><p>Engineering-based recycling workshops for schools and universities.</p><span class="more">Open details</span></button>
+    <div class="wrap split">
+      <div class="side"><h2>Projects</h2><p>Click a project for details.</p></div>
+      <div class="cards">
+        <button class="card feat" data-id="dodo"><span class="when">2026 – present</span><h3>Bipedal walking robot</h3><p>Simulation and control of a two-legged robot at TUM.</p><span class="more">Open details</span></button>
+        <button class="card" data-id="mhab"><span class="when">Mar. – Jun. 2026</span><h3>Power system for a flight-ready product</h3><p>Circuit design and battery safety testing for extreme conditions.</p><span class="more">Open details</span></button>
+        <button class="card" data-id="idiom"><span class="when">Nov. 2025 – Mar. 2026</span><h3>Wearable prototype shell</h3><p>Hardware design for an AI wearable for elderly care.</p><span class="more">Open details</span></button>
+        <button class="card" data-id="muon"><span class="when">Monash University</span><h3>Muon lifetime experiment</h3><p>Measuring how long muons live, and what that says about the weak force.</p><span class="more">Open details</span></button>
+        <button class="card" data-id="stm"><span class="when">Monash University</span><h3>Embedded relay chain</h3><p>Microcontrollers passing messages to each other, with a Python interface.</p><span class="more">Open details</span></button>
+        <button class="card" data-id="pp"><span class="when">Mar. 2023 – Jun. 2024</span><h3>Sustainability workshops</h3><p>Engineering-based recycling workshops for schools and universities.</p><span class="more">Open details</span></button>
+      </div>
     </div>
   </section>
+</main>
 
-  <section id="contact">
+<section class="contact" id="contact">
+  <div class="wrap">
     <h2>Contact</h2>
-    <div class="contact">
-      <p>Germany/EU: (+49) 152 07126269</p>
-      <p>Australia: (+61) 474 443 173</p>
-      <p><a href="mailto:isabelmbrindley@gmail.com">isabelmbrindley@gmail.com</a></p>
-      <p>81677 München-Bogenhausen, Germany</p>
+    <a class="mail" href="mailto:isabelmbrindley@gmail.com">isabelmbrindley@gmail.com</a>
+    <div class="cgrid">
+      <div><h4>Germany/EU</h4><p>(+49) 152 07126269</p></div>
+      <div><h4>Australia</h4><p>(+61) 474 443 173</p></div>
+      <div><h4>Address</h4><p>81677 München-Bogenhausen, Germany</p></div>
     </div>
-  </section>
-
-  <footer>© <span id="y"></span> Isabel Brindley.</footer>
-</div>
+    <footer>© <span id="y"></span> Isabel Brindley</footer>
+  </div>
+</section>
 
 <dialog id="dlg" aria-labelledby="dlgtitle">
   <button class="x" id="dlgclose" type="button">Close</button>
@@ -325,45 +483,108 @@ footer{padding:40px 0 64px;border-top:1px solid var(--line);color:var(--muted);f
 
 <template id="p-dodo">
   <h3 id="dlgtitle">Bipedal walking robot</h3>
-  <p class="meta">Robo-Dodo lab course · Technical University of Munich · 2026 – present</p>
+  <p class="meta">Robo-Dodo lab course, Technical University of Munich, 2026 – present</p>
   <p>I was selected for the Robo-Dodo lab course, where I work on simulation and control of a bipedal walking robot. Walking on two legs is a balancing problem: the controller has to keep the robot upright while it keeps falling forward, step after step.</p>
   <ul class="tags"><li>Robotics</li><li>Control theory</li><li>Simulation</li></ul>
 </template>
 <template id="p-mhab">
   <h3 id="dlgtitle">Power system for a flight-ready product</h3>
-  <p class="meta">MHAB student engineering team · Mar. 2026 – Jun. 2026</p>
+  <p class="meta">MHAB student engineering team, Mar. 2026 – Jun. 2026</p>
   <p>As part of the power engineering sub-division of a multi-disciplinary student team, I helped develop a flight-ready product. I designed LTspice schematics, including a buck converter, which steps a battery’s voltage down for the electronics.</p>
   <p>I also researched battery configurations for low-pressure, low-temperature environments, weighing safety, cost and efficiency, and developed battery safety testing experiments that apply physics principles to the risks of operating in extreme conditions.</p>
   <ul class="tags"><li>LTspice</li><li>Power electronics</li><li>Battery systems</li><li>Experimental design</li></ul>
 </template>
 <template id="p-muon">
   <h3 id="dlgtitle">Muon lifetime experiment</h3>
-  <p class="meta">Physics lab (PHS3000) · Monash University</p>
+  <p class="meta">Physics lab (PHS3000), Monash University</p>
   <p>Muons are short-lived particles that rain down from cosmic rays. By detecting when they decay and fitting the decay times, you can measure their lifetime and, from that, estimate the Fermi constant, a number that sets the strength of the weak nuclear force.</p>
   <p>I wrote Python scripts to analyse and fit the data, and wrote up the results as a lab report in LaTeX.</p>
   <ul class="tags"><li>Python</li><li>Data fitting</li><li>LaTeX</li><li>Particle physics</li></ul>
 </template>
 <template id="p-stm">
   <h3 id="dlgtitle">Embedded relay chain</h3>
-  <p class="meta">Embedded systems project (ECE2071) · Monash University</p>
+  <p class="meta">Embedded systems project (ECE2071), Monash University</p>
   <p>This project linked STM32 microcontrollers into a chain that relays messages from one board to the next over UART, a simple serial connection. I wrote and debugged the firmware in C using the HAL library, and built a Python interface that talks to the chain over the serial port.</p>
   <ul class="tags"><li>C</li><li>STM32</li><li>UART</li><li>Python</li></ul>
 </template>
 <template id="p-idiom">
   <h3 id="dlgtitle">Wearable prototype shell</h3>
-  <p class="meta">Idiom · Nov. 2025 – Mar. 2026</p>
+  <p class="meta">Idiom, Nov. 2025 – Mar. 2026</p>
   <p>Idiom is an early-stage startup developing an AI wearable for elderly care. I designed a prototype shell for the device, researched battery configurations, and analysed the AI software codebases. I also explored the market with the founder, which helped shape early product and business direction.</p>
   <ul class="tags"><li>Hardware prototyping</li><li>CAD</li><li>Battery systems</li></ul>
 </template>
 <template id="p-pp">
   <h3 id="dlgtitle">Sustainability workshops</h3>
-  <p class="meta">Precious Plastics Monash · Mar. 2023 – Jun. 2024</p>
+  <p class="meta">Precious Plastics Monash, Mar. 2023 – Jun. 2024</p>
   <p>I joined this eight-student engineering team as a member and became its Outreach Manager. We ran engineering-based workshops on recycling and sustainability, and I presented to primary school, secondary school and university audiences, planned events, managed budgets and worked with stakeholders across Monash.</p>
   <ul class="tags"><li>Leadership</li><li>Public speaking</li><li>Event planning</li></ul>
 </template>
 
 <script>
 document.getElementById('y').textContent = new Date().getFullYear();
+var reduceMotion = matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* Kagome lattice drawings: three families of parallel lines, offset so they never meet in threes */
+(function(){
+  var NS='http://www.w3.org/2000/svg', r3=Math.sqrt(3);
+  document.querySelectorAll('svg.kagome').forEach(function(svg){
+    var vb=svg.viewBox.baseVal, W=vb.width, H=vb.height, s=40, L=Math.max(W,H)*2;
+    var g=document.createElementNS(NS,'g');
+    g.setAttribute('stroke','currentColor'); g.setAttribute('stroke-width','2'); g.setAttribute('fill','none');
+    var dirs=[[1,0,0],[0.5,r3/2,0],[0.5,-r3/2,s/2]]; // direction x,y and offset
+    dirs.forEach(function(d){
+      var nx=-d[1], ny=d[0];
+      for(var k=-20;k<=20;k++){
+        var c=k*s+d[2], px=W/2+nx*c, py=H/2+ny*c;
+        var l=document.createElementNS(NS,'line');
+        l.setAttribute('x1',px-d[0]*L); l.setAttribute('y1',py-d[1]*L);
+        l.setAttribute('x2',px+d[0]*L); l.setAttribute('y2',py+d[1]*L);
+        g.appendChild(l);
+      }
+    });
+    svg.appendChild(g);
+    // atoms where the horizontal family crosses the 60 degree family
+    var a=document.createElementNS(NS,'g'); a.setAttribute('fill','var(--rose)');
+    for(var i=-12;i<=12;i++){ for(var j=-12;j<=12;j++){
+      var cy=H/2+i*s, ky=(i*s), cx=W/2+(ky/2 - j*s)*2/r3*0.5*2/2;
+      // solve: line1 y=i*s ; line2: -(r3/2)x + y/2 = j*s  -> x = (y/2 - j*s)*2/r3
+      cx=W/2+(ky/2 - j*s)*2/r3;
+      if(cx>-5&&cx<W+5&&cy>-5&&cy<H+5){
+        var c=document.createElementNS(NS,'circle'); c.setAttribute('cx',cx); c.setAttribute('cy',cy); c.setAttribute('r',4.5); a.appendChild(c);
+      }
+    }}
+    svg.appendChild(a);
+  });
+})();
+
+/* Sticky bar border, active nav link */
+(function(){
+  var top=document.getElementById('top'), links=[].slice.call(document.querySelectorAll('nav a[href^="#"]'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  function upd(){
+    top.classList.toggle('scrolled',scrollY>8);
+    var cur=-1; secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<innerHeight*0.35) cur=i; });
+    links.forEach(function(a,i){a.classList.toggle('active',i===cur)});
+  }
+  addEventListener('scroll',upd,{passive:true}); upd();
+})();
+
+/* Timeline: the line fills and dots light up as you read down */
+(function(){
+  var tls=[].slice.call(document.querySelectorAll('.tl'));
+  function upd(){
+    var mark=innerHeight*0.62;
+    tls.forEach(function(tl){
+      var r=tl.getBoundingClientRect(), fill=tl.querySelector('.fill');
+      var p=reduceMotion?1:Math.max(0,Math.min(1,(mark-r.top-8)/(r.height-16)));
+      fill.style.height=(p*(r.height-16))+'px';
+      tl.querySelectorAll('.e').forEach(function(e){
+        e.classList.toggle('on', reduceMotion || e.getBoundingClientRect().top+12<mark);
+      });
+    });
+  }
+  addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd); upd();
+})();
 
 /* Project details dialog */
 (function(){
@@ -383,7 +604,6 @@ document.getElementById('y').textContent = new Date().getFullYear();
   var $=function(id){return document.getElementById(id)};
   var svg=$('robot'), head=$('head'), pl=$('pl'), pr=$('pr');
   var ra=$('ra'), rf=$('rf'), la=$('la'), lf=$('lf');
-  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   var st={hx:0,hy:0,tx:0,ty:0,wave:null}, running=false;
   function ease(k){k=Math.max(0,Math.min(1,k));return k*k*(3-2*k)}
   function render(t){
@@ -416,7 +636,7 @@ document.getElementById('y').textContent = new Date().getFullYear();
   svg.addEventListener('keydown',function(e){
     if(e.key==='Enter'||e.key===' '){e.preventDefault();wave();}
   });
-  if(reduce) return;
+  if(reduceMotion) return;
   addEventListener('pointermove',function(e){
     var r=svg.getBoundingClientRect();
     var nx=(e.clientX-(r.left+r.width/2))/(innerWidth*0.4);
