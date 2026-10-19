@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects – Isabel Brindley</title>
+<meta name="description" content="Projects and lab reports by Isabel Brindley">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#0A3323; --sage:#839958; --cream:#F7F4D5; --rose:#D3968C; --teal:#105666;
+  --bg:#FFFFFF; --ink:var(--forest);
+  --muted:color-mix(in srgb,var(--forest) 66%,#fff);
+  --line:color-mix(in srgb,var(--forest) 14%,#fff);
+  --grid:color-mix(in srgb,var(--sage) 16%,#fff);
+  --head:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 var(--body)}
+a{color:var(--teal);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:var(--head);margin:0}
+
+/* top bar (same as the main page) */
+.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.logos{display:flex;align-items:center;gap:18px;text-decoration:none}
+.logos img{display:block;height:34px;width:auto}
+.logos .sep{width:1px;height:28px;background:var(--line)}
+.lgtxt{font:800 22px var(--head);color:#3070B3;letter-spacing:-.02em}
+nav{display:flex;align-items:center;gap:24px;font:500 15px var(--head)}
+nav a{color:var(--ink);text-decoration:none;position:relative;padding:4px 0}
+nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--rose);transform:scaleX(0);transform-origin:left;transition:transform .2s}
+nav a:hover::after,nav a.active::after{transform:scaleX(1)}
+nav .cta{background:var(--forest);color:#fff;padding:9px 16px;border-radius:999px}
+nav .cta::after{display:none}
+nav .cta:hover{background:var(--teal)}
+
+/* page header on graph paper */
+.head{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px;background-position:-1px -1px;border-bottom:1px solid var(--line);position:relative}
+.head::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#fff 0,rgba(255,255,255,0) 25%,rgba(255,255,255,0) 75%,#fff 100%);pointer-events:none}
+.head .wrap{position:relative;z-index:1;padding-top:56px;padding-bottom:48px}
+.back{display:inline-block;font:700 14px var(--head);color:var(--teal);text-decoration:none;margin-bottom:18px}
+.back:hover{text-decoration:underline}
+h1{font-size:clamp(48px,7vw,88px);line-height:.95;font-weight:800;letter-spacing:-.035em}
+.lede{font-size:20px;line-height:1.5;max-width:52ch;margin:18px 0 22px}
+.jump{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.jump a{display:block;font:500 14px var(--head);color:var(--ink);text-decoration:none;background:#fff;border:1px solid color-mix(in srgb,var(--sage) 55%,#fff);border-radius:999px;padding:6px 14px}
+.jump a:hover{background:var(--rose);border-color:var(--rose)}
+
+/* one project per section */
+.proj{padding:72px 0;border-bottom:1px solid var(--line)}
+.proj:last-of-type{border-bottom:0}
+.split{display:grid;grid-template-columns:200px 1fr;gap:48px}
+.side{font:500 14px/1.5 var(--head);color:var(--muted)}
+.side .sticky{position:sticky;top:104px}
+.side .when{display:inline-block;color:var(--teal);background:color-mix(in srgb,var(--teal) 8%,#fff);padding:3px 10px;border-radius:999px;margin-bottom:8px}
+.proj h2{font-size:clamp(28px,3.4vw,38px);line-height:1.1;letter-spacing:-.02em;margin-bottom:6px}
+.proj .meta{font:500 15px var(--head);color:var(--muted);margin:0 0 20px}
+.proj p{margin:0 0 16px;max-width:66ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 0;padding:0;list-style:none}
+.tags li{font:500 14px var(--head);background:var(--cream);padding:5px 12px;border-radius:999px}
+
+/* report viewer: every page drawn in a scrollable panel */
+.report{margin-top:32px}
+.report h3{font-size:16px;color:var(--teal);margin-bottom:12px}
+.pages{max-height:78vh;overflow:auto;background:var(--cream);border-radius:16px;padding:18px;display:grid;gap:14px}
+.pages canvas{display:block;width:100%;height:auto;background:#fff;border-radius:4px;box-shadow:0 2px 10px rgba(10,51,35,.12)}
+.pages .loading{font:500 14px var(--head);color:var(--muted);text-align:center;padding:40px 0}
+.report .btn{margin-top:16px}
+.report.failed .pages{display:none}
+.btn{display:inline-block;font:700 15px var(--head);padding:13px 22px;border-radius:999px;text-decoration:none;border:2px solid var(--forest);background:var(--forest);color:#fff}
+.btn:hover{background:var(--teal);border-color:var(--teal)}
+
+footer{background:var(--forest);color:color-mix(in srgb,#fff 70%,var(--forest));font:500 14px var(--head);padding:40px 0}
+footer a{color:var(--rose)}
+
+@media (max-width:900px){
+  .split{grid-template-columns:1fr;gap:12px}
+  .side .sticky{position:static}
+}
+@media (max-width:640px){
+  .top .wrap{height:auto;flex-direction:column;align-items:flex-start;gap:8px;padding-top:10px;padding-bottom:10px}
+  .logos img{height:26px}
+  nav{gap:12px;font-size:14px;overflow-x:auto;max-width:100%}
+  nav .cta{display:none}
+  .proj{padding:52px 0}
+  .pages{padding:10px;max-height:70vh}
+  html{scroll-padding-top:110px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logos" href="index.html" aria-label="Back to home">
+      <img src="tum-logo.svg" alt="Technical University of Munich" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='tum-logo.png'}else{var s=document.createElement('span');s.className='lgtxt';s.textContent='TUM';this.replaceWith(s)}">
+      <span class="sep" aria-hidden="true"></span>
+      <img src="monash-logo.svg" alt="Monash University">
+    </a>
+    <nav aria-label="Main">
+      <a href="index.html#about">About</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#thesis">Thesis</a>
+      <a class="active" href="projects.html">Projects</a>
+      <a href="index.html#events">Events</a>
+      <a href="index.html#contact">Contact</a>
+      <a class="cta" href="resume.pdf">CV</a>
+    </nav>
+  </div>
+</header>
+
+<div class="head">
+  <div class="wrap">
+    <a class="back" href="index.html#projects">Back to home</a>
+    <h1>Projects</h1>
+    <p class="lede">Engineering and physics projects from university and student teams, with full lab reports where I have them.</p>
+    <ul class="jump">
+      <li><a href="#mhab">High-altitude balloon</a></li>
+      <li><a href="#muon">Muon lifetime</a></li>
+      <li><a href="#alpha">Alpha-particle range</a></li>
+      <li><a href="#stm">Audio sampling device</a></li>
+      <li><a href="#dodo">Bipedal walking robot</a></li>
+    </ul>
+  </div>
+</div>
+
+<main>
+  <!--
+    HOW TO ADD A PROJECT
+    Copy one <section class="proj"> ... </section> block and change the text.
+    Give it a new id (e.g. id="my-project"), and add a matching card on the home page
+    linking to projects.html#my-project.
+    For a report: put the PDF in your repo and set data-pdf="Your_Report.pdf".
+    Delete the whole <div class="report"> ... </div> block if there's no report.
+  -->
+
+  <section class="proj" id="mhab">
+    <div class="wrap split">
+      <div class="side"><div class="sticky"><span class="when">Mar. – Jun. 2026</span><br>MHAB student team</div></div>
+      <div>
+        <h2>Power system for a high-altitude balloon</h2>
+        <p>As part of the power engineering sub-division of a multi-disciplinary student team, I helped develop a flight-ready product. I designed LTspice schematics, including a buck converter, which steps a battery’s voltage down for the electronics.</p>
+        <p>I also researched battery configurations for low-pressure, low-temperature environments, weighing safety, cost and efficiency, and developed battery safety testing experiments that apply physics principles to the risks of operating in extreme conditions.</p>
+        <ul class="tags"><li>LTspice</li><li>Power electronics</li><li>Battery systems</li><li>Experimental design</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj" id="muon">
+    <div class="wrap split">
+      <div class="side"><div class="sticky"><span class="when">Monash University</span><br>Physics lab (PHS3000)</div></div>
+      <div>
+        <h2>Muon lifetime experiment</h2>
+        <p>Muons are short-lived particles that rain down from cosmic rays. By detecting when they decay and fitting the decay times, you can measure their lifetime and, from that, estimate the Fermi constant, a number that sets the strength of the weak nuclear force.</p>
+        <p>I wrote Python scripts to analyse and fit the data, and wrote up the results as a lab report in LaTeX.</p>
+        <ul class="tags"><li>Python</li><li>Data fitting</li><li>LaTeX</li><li>Particle physics</li></ul>
+        <div class="report" data-pdf="Experiment_1_4_Report.pdf">
+          <h3>Lab report</h3>
+          <div class="pages"><p class="loading">Loading the report…</p></div>
+          <a class="btn" href="Experiment_1_4_Report.pdf" target="_blank" rel="noopener">Open the full report (PDF)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj" id="alpha">
+    <div class="wrap split">
+      <div class="side"><div class="sticky"><span class="when">Monash University</span><br>Physics lab (PHS3000)</div></div>
+      <div>
+        <h2>Alpha-particle range experiment</h2>
+        <p>Measuring the range of alpha particles emitted from an americium-241 source. This was achieved by varying the air pressure of the chamber through which they travelled, measuring their final energy and number with a photodiode, and exploring approximation techniques to translate this into range measurements.</p>
+        <p>To estimate the number of particles that reached the detector, I developed a skewed-Gaussian model and a corresponding integration method to account for the naturally left-skewed data.</p>
+        <ul class="tags"><li>Python</li><li>Data fitting</li><li>Nuclear physics</li><li>Experimental design</li></ul>
+        <div class="report" data-pdf="Experiment_1_2_Report.pdf">
+          <h3>Lab report</h3>
+          <div class="pages"><p class="loading">Loading the report…</p></div>
+          <a class="btn" href="Experiment_1_2_Report.pdf" target="_blank" rel="noopener">Open the full report (PDF)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj" id="stm">
+    <div class="wrap split">
+      <div class="side"><div class="sticky"><span class="when">Monash University</span><br>Embedded systems</div></div>
+      <div>
+        <h2>Audio sampling device</h2>
+        <p>A high-frequency audio sampling device constructed from three STM32 microcontrollers, using the SPI communication protocol and DMA (direct memory access) to increase sampling speed.</p>
+        <ul class="tags"><li>C</li><li>STM32</li><li>SPI</li><li>DMA</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj" id="dodo">
+    <div class="wrap split">
+      <div class="side"><div class="sticky"><span class="when">Starting Oct. 2026</span><br>TUM lab course</div></div>
+      <div>
+        <h2>Bipedal walking robot</h2>
+        <p>More to come...</p>
+        <ul class="tags"><li>Robotics</li><li>Control theory</li><li>Simulation</li></ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="y"></span> Isabel Brindley · <a href="index.html">Back to home</a></div>
+</footer>
+
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+
+/* Report viewer: draws every page of each PDF. If a report can't load, only the "open" button shows. */
+(function(){
+  var reports=document.querySelectorAll('.report[data-pdf]');
+  if(!reports.length) return;
+  function fail(r){ r.classList.add('failed'); }
+  var sc=document.createElement('script');
+  sc.src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+  sc.onerror=function(){ reports.forEach(fail); };
+  sc.onload=function(){
+    pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    reports.forEach(function(r){
+      var box=r.querySelector('.pages');
+      pdfjsLib.getDocument(r.dataset.pdf).promise.then(function(doc){
+        box.innerHTML='';
+        var chain=Promise.resolve();
+        for(var n=1;n<=doc.numPages;n++){
+          (function(n){
+            chain=chain.then(function(){return doc.getPage(n);}).then(function(page){
+              var w=(box.clientWidth-36)||600, v1=page.getViewport({scale:1});
+              var vp=page.getViewport({scale:(w/v1.width)*Math.min(window.devicePixelRatio||1,2)});
+              var c=document.createElement('canvas'); c.width=vp.width; c.height=vp.height;
+              c.setAttribute('aria-label','Page '+n+' of the report');
+              box.appendChild(c);
+              return page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;
+            });
+          })(n);
+        }
+        return chain;
+      }).catch(function(){ fail(r); });
+    });
+  };
+  document.head.appendChild(sc);
+})();
+</script>
+</body>
+</html>
