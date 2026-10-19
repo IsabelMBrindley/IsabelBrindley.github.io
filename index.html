@@ -10,84 +10,103 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#EDF0EA; --ink:#16201B; --muted:#55645B; --line:#C9D1C6;
-  --moss:#3C6350; --accent:#2456C9; --panel:#E1E7DE;
+  /* palette */
+  --cream:#F7F4D5; --forest:#0A3323; --sage:#839958; --rose:#D3968C; --teal:#105666;
+  /* roles (light) */
+  --bg:#FFFFFF; --ink:var(--forest); --link:var(--teal); --accent:var(--rose); --moss:var(--teal);
+  --muted:color-mix(in srgb,var(--forest) 68%,#fff);
+  --line:color-mix(in srgb,var(--forest) 18%,#fff);
+  --panel:color-mix(in srgb,var(--sage) 20%,#fff);
   --head:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
   --body:"Source Serif 4",Georgia,"Times New Roman",serif;
 }
 @media (prefers-color-scheme:dark){
   :root{
-    --bg:#121915; --ink:#E6ECE3; --muted:#9BAAA0; --line:#2A362F;
-    --moss:#8FBFA3; --accent:#7FA2FF; --panel:#19231D;
+    --bg:var(--forest); --ink:var(--cream); --link:var(--rose); --accent:var(--rose); --moss:var(--sage);
+    --muted:color-mix(in srgb,var(--cream) 72%,var(--forest));
+    --line:color-mix(in srgb,var(--cream) 20%,var(--forest));
+    --panel:color-mix(in srgb,var(--sage) 22%,var(--forest));
   }
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 var(--body)}
 body:has(dialog[open]){overflow:hidden}
-a{color:var(--accent);text-underline-offset:3px}
-a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+a{color:var(--link);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--link);outline-offset:3px}
 .wrap{max-width:960px;margin:0 auto;padding:0 24px}
 nav{display:flex;gap:22px;flex-wrap:wrap;padding:22px 0;font:500 15px var(--head)}
 nav a{color:var(--ink);text-decoration:none}
-nav a:hover{color:var(--accent)}
+nav a:hover{color:var(--link);text-decoration:underline}
 .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;padding:48px 0 72px}
 h1{font:800 clamp(44px,8vw,88px)/.98 var(--head);letter-spacing:-.03em;margin:0 0 20px}
 .lede{font-size:21px;max-width:34ch;margin:0 0 28px}
 .btns{display:flex;gap:12px;flex-wrap:wrap}
 .btn{font:700 15px var(--head);padding:12px 20px;border-radius:6px;text-decoration:none;border:2px solid var(--ink);color:var(--ink);display:inline-block}
 .btn.main{background:var(--ink);color:var(--bg)}
-.btn:hover{border-color:var(--accent);color:var(--accent)}
-.btn.main:hover{background:var(--accent);color:#fff}
+.btn:hover{border-color:var(--link);color:var(--link)}
+.btn.main:hover{background:var(--link);border-color:var(--link);color:var(--bg)}
 .robot-wrap{margin:0}
 .robot{display:block;width:100%;max-width:340px;height:auto;margin:0 auto;color:var(--moss);cursor:pointer}
-.robot-wrap figcaption{font:500 14px var(--head);color:var(--muted);text-align:center;margin-top:8px}
 section{padding:56px 0;border-top:1px solid var(--line)}
 h2{font:700 30px/1.1 var(--head);letter-spacing:-.01em;margin:0 0 28px}
 h3{font:700 20px/1.3 var(--head);margin:0}
-.panel{background:var(--panel);border-left:4px solid var(--moss);padding:24px 28px;border-radius:0 8px 8px 0}
+#about > p{max-width:72ch;margin:0}
+.panel{background:var(--panel);border-left:4px solid var(--sage);padding:24px 28px;border-radius:0 8px 8px 0}
 .panel h3{font-size:22px;margin-bottom:8px}
 .panel p{margin:0 0 14px;max-width:62ch}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none}
-.tags li{font:500 14px var(--head);border:1px solid var(--line);padding:4px 12px;border-radius:999px}
+.tags li{font:500 14px var(--head);border:1px solid var(--sage);padding:4px 12px;border-radius:999px}
+
+/* education and experience: one continuous timeline */
+.rs{margin-top:52px}
+.grp{margin-bottom:44px}
+.grp:last-child{margin-bottom:0}
+.grp > h3{font:700 13px var(--head);letter-spacing:.14em;text-transform:uppercase;color:var(--link);margin:0 0 20px}
+.e{position:relative;padding:0 0 28px 28px;border-left:2px solid var(--line)}
+.e:last-child{padding-bottom:0;border-left-color:transparent}
+.e::before{content:"";position:absolute;left:-7px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+.e.s{padding-bottom:14px}
+.r{display:flex;justify-content:space-between;align-items:baseline;gap:2px 16px;flex-wrap:wrap}
+.r b{font:700 18px/1.4 var(--head)}
+.r span{font:500 15px var(--head);color:var(--muted);white-space:nowrap}
+.r i{font-size:16px;color:var(--muted)}
+.r + .r{margin-top:2px}
+.e p{margin:10px 0 0;max-width:72ch}
+.e ul{margin:10px 0 0;padding-left:20px;max-width:72ch}
+.e li{margin-bottom:6px}
+.e li:last-child{margin-bottom:0}
+.org{display:flex;align-items:center;gap:12px}
+.logo{display:block;height:34px;width:auto;background:#fff;padding:4px 8px;border-radius:4px}
+.plain{padding-left:28px;border-left:2px solid transparent}
+.plain p{margin:0 0 8px}
+.plain p:last-child{margin-bottom:0}
 
 /* projects */
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
-.card{all:unset;box-sizing:border-box;cursor:pointer;display:block;background:var(--panel);border-left:4px solid var(--moss);border-radius:0 8px 8px 0;padding:20px 22px}
+.card{all:unset;box-sizing:border-box;cursor:pointer;display:block;background:var(--panel);border-left:4px solid var(--sage);border-radius:0 8px 8px 0;padding:20px 22px}
 .card:hover{border-left-color:var(--accent)}
-.card:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.card:focus-visible{outline:3px solid var(--link);outline-offset:3px}
 .card .when{font:500 14px var(--head);color:var(--muted)}
 .card h3{margin:4px 0 8px}
 .card p{margin:0;font-size:16px;line-height:1.5}
-.card .more{display:block;margin-top:12px;font:700 14px var(--head);color:var(--accent)}
+.card .more{display:block;margin-top:12px;font:700 14px var(--head);color:var(--link)}
 dialog{background:var(--bg);color:var(--ink);border:2px solid var(--ink);border-radius:8px;padding:28px;width:min(620px,92vw);max-height:86vh;overflow:auto}
-dialog::backdrop{background:rgba(10,16,12,.55)}
+dialog::backdrop{background:rgba(10,51,35,.6)}
 dialog h3{font-size:26px;margin-bottom:4px}
 dialog .meta{font:500 15px var(--head);color:var(--muted);margin:0 0 16px}
 dialog p{margin:0 0 14px}
 .x{float:right;font:700 15px var(--head);background:none;color:var(--ink);border:2px solid var(--ink);border-radius:6px;padding:6px 14px;cursor:pointer;margin-left:16px}
-.x:hover{border-color:var(--accent);color:var(--accent)}
+.x:hover{border-color:var(--link);color:var(--link)}
 
-/* resume */
-.rs h3{margin:36px 0 14px;padding-bottom:6px;border-bottom:1px solid var(--line)}
-.rs h3:first-child{margin-top:0}
-.rs .r{display:flex;justify-content:space-between;gap:4px 16px;flex-wrap:wrap}
-.rs .r b{font:700 18px var(--head)}
-.rs .r span{font-size:16px;white-space:nowrap}
-.rs .r i{font-size:16px}
-.rs .e{margin-bottom:22px}
-.rs p{margin:6px 0 0;max-width:72ch}
-.rs ul{margin:6px 0 0;padding-left:22px;max-width:72ch}
-.rs li{margin-bottom:4px}
-.rs .plain p{margin:0 0 6px}
 .contact p{margin:0}
-
 footer{padding:40px 0 64px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
 
 @media (max-width:720px){
   .hero{grid-template-columns:1fr}
   .robot{max-width:260px}
-  .rs .r span{white-space:normal}
+  .r span{white-space:normal}
+  .logo{height:28px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -142,76 +161,85 @@ footer{padding:40px 0 64px;border-top:1px solid var(--line);color:var(--muted);f
 
   <section id="about">
     <h2>About</h2>
-    <p>I’m an Australian physics graduate who moved to Munich to study Mechatronics, Robotics and Biomechanical Engineering (MRBE) at TUM. I have hands-on experience across power electronics, battery systems, hardware prototyping and CAD, gained through a startup developing an AI wearable for elderly care, a multidisciplinary student engineering team and a professional engineering internship. Strong foundation in experimental design, programming and technical writing, with experience leading and coordinating teams. I'm seeking to apply this to high-tech robotics, with a particular interest in biomechatronics and impact-driven applications such as caregiving or environmental purposes. </p>
-  <h3>Education</h3>
-      <div class="e">
-        <div class="r"><b>Technical University of Munich</b><span>Oct. 2026 – Present</span></div>
-        <div class="r"><i>MSc. Mechatronics, Robotics and Biomechanical Engineering</i><i>Munich, Germany</i></div>
-        <ul>
-          <li>Pursuing topics in Robotics, Control Theory, AI, Dynamics, Programming and Biomechanical engineering to become a competent all-rounder engineer.</li>
-          <li>Selected for the Robo-Dodo lab course, working on simulation and control of a bipedal walking robot.</li>
-        </ul>
-      </div>
-      <div class="e">
-        <div class="r"><b>Monash University</b><span>Jan. 2023 – Jun. 2026</span></div>
-        <div class="r"><i>Bachelor of Science (Physics)</i><i>Melbourne, Australia</i></div>
-        <ul>
-          <li>WAM: 81/100 | GPA: 3.4/4.0</li>
-          <li>Areas of study: Physics, Mechtronics Engineering, Computer Science, Mathematics, Astronomy</li>
-          <li>Undertook a research project under the supervision of Dr. Mark Edmonds in materials physics. In my project, titled <i>Understanding the growth and electronic properties of rare earth Kagome metals</i>, I grew thin film samples of rare-earth Kagome metal TbMn<sub>6</sub>Sn<sub>6</sub> with Molecular Beam Epitaxy and analysed their chemical composition and electrical properties using various Photoemission Spectroscopy techniques.</li>
-        </ul>
-      </div>
-      <div class="e">
-        <div class="r"><b>Rijksuniversiteit Groningen (Academic Exchange)</b><span>Jan. 2025 – Jun. 2025</span></div>
-        <div class="r"><i>Bachelor of Science</i><i>Groningen, Netherlands</i></div>
-        <ul><li>Coursework in Particle Physics, Mathematics and Astronomy.</li></ul>
-      </div>
-      <div class="e">
-        <div class="r"><b>Melbourne Girls Grammar</b><span>Graduated Nov. 2022</span></div>
-        <div class="r"><i>VCE</i><i>Melbourne, Australia</i></div>
-        <ul><li>99.65/100.00 ATAR</li></ul>
-      </div>
-      <h3>Professional Experience</h3>
-      <div class="e">
-        <div class="r"><b>Electrical Engineer (Student Team)</b><span>Mar. 2026 – Jun. 2026</span></div>
-        <div class="r"><i>MHAB</i><i>Melbourne, Australia</i></div>
-        <p>During my time with MHAB, a multi-disciplinary student team, I contributed to the power engineering sub-division in developing a flight-ready product. I designed LTspice schematics, including a buck converter, and researched battery configurations for low-pressure, low-temperature environments, weighing safety, cost and efficiency. I also developed battery safety testing experiments, applying physics principles to the risks of operating in extreme conditions.</p>
-      </div>
-      <div class="e">
-        <div class="r"><b>Engineer (Hardware &amp; Product Development)</b><span>Nov. 2025 – Mar. 2026</span></div>
-        <div class="r"><i>Idiom</i><i>Melbourne, Australia</i></div>
-        <p>Worked at the forefront of Idiom, an early-stage startup developing an AI wearable for elderly care. I analysed AI software codebases, researched battery configurations and designed a prototype shell. I also explored the market with the founder and discussed business ideas, contributing to early product and business direction.</p>
-      </div>
-      <div class="e">
-        <div class="r"><b>Engineering Internship</b><span>May 2024</span></div>
-        <div class="r"><i>Traffix Group</i><i>Melbourne, Australia</i></div>
-        <p>To explore a career pathway in Civil Engineering, I undertook an internship with Traffix Group, a traffic engineering consultancy. I designed carparks and developed swept paths using CAD software. I conducted on-site traffic surveys for new housing developments and contributed to traffic reports for proposed developments and infrastructure projects.</p>
-      </div>
-      <div class="e">
-        <div class="r"><b>Outreach Manager (Student Team)</b><span>Mar. 2023 – Jun. 2024</span></div>
-        <div class="r"><i>Precious Plastics Monash</i><i>Melbourne, Australia</i></div>
-        <p>Starting as a team-member and then working up to manager, I was part of a multidisciplinary team of eight students, promoting sustainability and recycling through engineering-based workshops. I delivered presentations to primary, secondary and university audiences, while planning events, managing budgets and liaising with stakeholders across the Monash community.</p>
+    <p>I’m an Australian physics graduate who moved to Munich to study Mechatronics, Robotics and Biomechanical Engineering (MRBE) at TUM. I have hands-on experience across power electronics, battery systems, hardware prototyping and CAD, gained through a startup developing an AI wearable for elderly care, a multidisciplinary student engineering team and a professional engineering internship. Strong foundation in experimental design, programming and technical writing, with experience leading and coordinating teams. I’m seeking to apply this to high-tech robotics, with a particular interest in biomechatronics and impact-driven applications such as caregiving or environmental purposes.</p>
+
+    <div class="rs" id="resume">
+      <div class="grp">
+        <h3>Education</h3>
+        <div class="e">
+          <div class="r"><div class="org"><img class="logo" src="tum-logo.png" alt="Technical University of Munich logo" onerror="this.style.display='none'"><b>Technical University of Munich</b></div><span>Oct. 2026 – Present</span></div>
+          <div class="r"><i>MSc. Mechatronics, Robotics and Biomechanical Engineering</i><i>Munich, Germany</i></div>
+          <ul>
+            <li>Pursuing topics in Robotics, Control Theory, AI, Dynamics, Programming and Biomechanical engineering to become a competent all-rounder engineer.</li>
+            <li>Selected for the Robo-Dodo lab course, working on simulation and control of a bipedal walking robot.</li>
+          </ul>
+        </div>
+        <div class="e">
+          <div class="r"><div class="org"><img class="logo" src="monash-logo.png" alt="Monash University logo" onerror="this.style.display='none'"><b>Monash University</b></div><span>Jan. 2023 – Jun. 2026</span></div>
+          <div class="r"><i>Bachelor of Science (Physics)</i><i>Melbourne, Australia</i></div>
+          <ul>
+            <li>WAM: 81/100 | GPA: 3.4/4.0</li>
+            <li>Areas of study: Physics, Mechtronics Engineering, Computer Science, Mathematics, Astronomy</li>
+            <li>Undertook a research project under the supervision of Dr. Mark Edmonds in materials physics. In my project, titled <i>Understanding the growth and electronic properties of rare earth Kagome metals</i>, I grew thin film samples of rare-earth Kagome metal TbMn<sub>6</sub>Sn<sub>6</sub> with Molecular Beam Epitaxy and analysed their chemical composition and electrical properties using various Photoemission Spectroscopy techniques.</li>
+          </ul>
+        </div>
+        <div class="e">
+          <div class="r"><b>Rijksuniversiteit Groningen (Academic Exchange)</b><span>Jan. 2025 – Jun. 2025</span></div>
+          <div class="r"><i>Bachelor of Science</i><i>Groningen, Netherlands</i></div>
+          <ul><li>Coursework in Particle Physics, Mathematics and Astronomy.</li></ul>
+        </div>
+        <div class="e">
+          <div class="r"><b>Melbourne Girls Grammar</b><span>Graduated Nov. 2022</span></div>
+          <div class="r"><i>VCE</i><i>Melbourne, Australia</i></div>
+          <ul><li>99.65/100.00 ATAR</li></ul>
+        </div>
       </div>
 
-      <h3>Other Experience</h3>
-      <div class="plain">
-        <div class="r"><b>Store Assistant, ALDI</b><span>Oct. 2023 – Nov. 2025</span></div>
-        <div class="r"><b>Waitress, North Point Cafe</b><span>Nov. 2021 – Jan. 2023</span></div>
-        <div class="r"><b>Team Member, Grill’d</b><span>Jun. 2020 – Nov. 2021</span></div>
+      <div class="grp">
+        <h3>Professional Experience</h3>
+        <div class="e">
+          <div class="r"><b>Electrical Engineer (Student Team)</b><span>Mar. 2026 – Jun. 2026</span></div>
+          <div class="r"><i>MHAB</i><i>Melbourne, Australia</i></div>
+          <p>During my time with MHAB, a multi-disciplinary student team, I contributed to the power engineering sub-division in developing a flight-ready product. I designed LTspice schematics, including a buck converter, and researched battery configurations for low-pressure, low-temperature environments, weighing safety, cost and efficiency. I also developed battery safety testing experiments, applying physics principles to the risks of operating in extreme conditions.</p>
+        </div>
+        <div class="e">
+          <div class="r"><b>Engineer (Hardware &amp; Product Development)</b><span>Nov. 2025 – Mar. 2026</span></div>
+          <div class="r"><i>Idiom</i><i>Melbourne, Australia</i></div>
+          <p>Worked at the forefront of Idiom, an early-stage startup developing an AI wearable for elderly care. I analysed AI software codebases, researched battery configurations and designed a prototype shell. I also explored the market with the founder and discussed business ideas, contributing to early product and business direction.</p>
+        </div>
+        <div class="e">
+          <div class="r"><b>Engineering Internship</b><span>May 2024</span></div>
+          <div class="r"><i>Traffix Group</i><i>Melbourne, Australia</i></div>
+          <p>To explore a career pathway in Civil Engineering, I undertook an internship with Traffix Group, a traffic engineering consultancy. I designed carparks and developed swept paths using CAD software. I conducted on-site traffic surveys for new housing developments and contributed to traffic reports for proposed developments and infrastructure projects.</p>
+        </div>
+        <div class="e">
+          <div class="r"><b>Outreach Manager (Student Team)</b><span>Mar. 2023 – Jun. 2024</span></div>
+          <div class="r"><i>Precious Plastics Monash</i><i>Melbourne, Australia</i></div>
+          <p>Starting as a team-member and then working up to manager, I was part of a multidisciplinary team of eight students, promoting sustainability and recycling through engineering-based workshops. I delivered presentations to primary, secondary and university audiences, while planning events, managing budgets and liaising with stakeholders across the Monash community.</p>
+        </div>
       </div>
 
-      <h3>Skills &amp; Interests</h3>
-      <div class="plain">
-        <p><b>Programming:</b> Python, C, C++, MATLAB, Wolfram Language, LaTeX</p>
-        <p><b>Hardware &amp; Embedded:</b> Verilog, MIPS Assembly, Arduino</p>
-        <p><b>Software:</b> SolidWorks, Microsoft 365</p>
-        <p><b>Languages:</b> English (Native), French (B2)</p>
-        <p><b>Interests:</b> Bouldering, Hiking, Travelling, Reading</p>
+      <div class="grp">
+        <h3>Other Experience</h3>
+        <div class="e s"><div class="r"><b>Store Assistant, ALDI</b><span>Oct. 2023 – Nov. 2025</span></div></div>
+        <div class="e s"><div class="r"><b>Waitress, North Point Cafe</b><span>Nov. 2021 – Jan. 2023</span></div></div>
+        <div class="e s"><div class="r"><b>Team Member, Grill’d</b><span>Jun. 2020 – Nov. 2021</span></div></div>
       </div>
-  
+
+      <div class="grp">
+        <h3>Skills &amp; Interests</h3>
+        <div class="plain">
+          <p><b>Programming:</b> Python, C, C++, MATLAB, Wolfram Language, LaTeX</p>
+          <p><b>Hardware &amp; Embedded:</b> Verilog, MIPS Assembly, Arduino</p>
+          <p><b>Software:</b> SolidWorks, Microsoft 365</p>
+          <p><b>Languages:</b> English (Native), French (B2)</p>
+          <p><b>Interests:</b> Bouldering, Hiking, Travelling, Reading</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="bachelor research project">
+  <section id="thesis">
     <h2>Thesis</h2>
     <div class="panel">
       <h3>Understanding the growth and electronic properties of rare earth Kagome metals</h3>
