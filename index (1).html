@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Isabel Brindley – Robotics &amp; Biomechatronics</title>
+<meta name="description" content="Physics graduate and robotics master's student at TUM. Resume, thesis and projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDF0EA; --ink:#16201B; --muted:#55645B; --line:#C9D1C6;
+  --moss:#3C6350; --accent:#2456C9; --panel:#E1E7DE;
+  --head:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#121915; --ink:#E6ECE3; --muted:#9BAAA0; --line:#2A362F;
+    --moss:#8FBFA3; --accent:#7FA2FF; --panel:#19231D;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 var(--body)}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+nav{display:flex;gap:22px;flex-wrap:wrap;padding:22px 0;font:500 15px var(--head)}
+nav a{color:var(--ink);text-decoration:none}
+nav a:hover{color:var(--accent)}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;padding:48px 0 72px}
+h1{font:800 clamp(44px,8vw,88px)/.98 var(--head);letter-spacing:-.03em;margin:0 0 20px}
+.lede{font-size:21px;max-width:34ch;margin:0 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font:700 15px var(--head);padding:12px 20px;border-radius:6px;text-decoration:none;border:2px solid var(--ink);color:var(--ink)}
+.btn.main{background:var(--ink);color:var(--bg)}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.main:hover{background:var(--accent);color:#fff}
+.finger{width:100%;height:auto;color:var(--moss)}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font:700 30px/1.1 var(--head);letter-spacing:-.01em;margin:0 0 28px}
+.grid{display:grid;grid-template-columns:200px 1fr;gap:12px 32px}
+.when{font:500 15px var(--head);color:var(--muted);padding-top:4px}
+.item{margin-bottom:28px}
+.item h3{font:700 20px var(--head);margin:0 0 4px}
+.item p{margin:0;max-width:62ch}
+.panel{background:var(--panel);border-left:4px solid var(--moss);padding:24px 28px;border-radius:0 8px 8px 0}
+.panel h3{font:700 22px var(--head);margin:0 0 8px}
+.panel p{margin:0 0 14px;max-width:62ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding:0;list-style:none}
+.tags li{font:500 14px var(--head);border:1px solid var(--line);padding:4px 12px;border-radius:999px}
+footer{padding:40px 0 64px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
+@media (max-width:720px){
+  .hero{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr;gap:2px}
+  .finger{max-width:320px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav aria-label="Main">
+    <a href="#about">About</a>
+    <a href="#thesis">Thesis</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#resume">Resume</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <h1>Isabel Brindley</h1>
+      <p class="lede">Physics graduate studying mechatronics, robotics and biomechanical engineering in Munich.</p>
+      <div class="btns">
+        <a class="btn main" href="resume.pdf">Download resume</a>
+        <a class="btn" href="#thesis">Read my thesis</a>
+      </div>
+    </div>
+    <!-- A three-joint finger that curls once on load: biomimicry in miniature -->
+    <svg class="finger" viewBox="0 0 300 300" role="img" aria-label="A jointed robotic finger curling">
+      <g id="f" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round"></g>
+      <g id="j" fill="var(--bg)" stroke="currentColor" stroke-width="5"></g>
+    </svg>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>I'm an Australian physicist who moved to Munich to study Mechatronics, Robotics and Biomechanical Engineering (MRBE) at TUM. I want to build high-tech robots that help people, especially in caregiving and medical settings, and I'm drawn to designs borrowed from how living things move.</p>
+    <p>I've worked on power electronics and battery systems, prototyped hardware for an elderly-care startup, and grown thin-film crystals for a physics research project. Right now I'm working on simulation and control of a bipedal walking robot.</p>
+    <ul class="tags">
+      <li>Robotics</li><li>Biomechatronics</li><li>Biomimicry</li><li>Power electronics</li><li>Python</li><li>C / C++</li><li>MATLAB</li><li>SolidWorks</li>
+    </ul>
+  </section>
+
+  <section id="thesis">
+    <h2>Thesis</h2>
+    <div class="panel">
+      <h3>Understanding the growth and electronic properties of rare earth Kagome metals</h3>
+      <p>Physics research project (PHS3350), Monash University, supervised by Dr. Mark Edmonds, November 2025.</p>
+      <p>Kagome metals have atoms arranged in a woven pattern of triangles and hexagons, which makes their electrons behave in unusual ways. This could help build faster, lower-energy computers. I grew ultra-thin crystal films of one of these metals, TbMn<sub>6</sub>Sn<sub>6</sub>, then studied them at the Australian Synchrotron using X-ray and angle-resolved photoemission spectroscopy. The measurements showed early signs of the two features the theory predicts, and an unexpected chemical signal that needs more work to explain.</p>
+      <a href="thesis.pdf">Read the full thesis (PDF)</a>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience and education</h2>
+    <div class="grid">
+      <div class="when">Oct 2026 – present</div>
+      <div class="item"><h3>MSc Mechatronics, Robotics and Biomechanical Engineering</h3><p>Technical University of Munich, Germany. Selected for the Robo-Dodo lab course on a bipedal walking robot.</p></div>
+
+      <div class="when">Mar – Jun 2026</div>
+      <div class="item"><h3>Electrical Engineer, MHAB</h3><p>Student engineering team building a flight-ready product. I designed LTspice circuits including a buck converter, researched battery configurations for low-pressure, low-temperature conditions, and developed battery safety tests.</p></div>
+
+      <div class="when">Nov 2025 – Mar 2026</div>
+      <div class="item"><h3>Engineer (Hardware and Product Development), Idiom</h3><p>Early-stage startup building an AI wearable for elderly care. I analysed AI software codebases, researched battery configurations, designed a prototype shell, and helped explore the market with the founder.</p></div>
+
+      <div class="when">Jan 2023 – Jun 2026</div>
+      <div class="item"><h3>BSc Physics, Mathematics minor</h3><p>Monash University, Melbourne, with an exchange semester at the University of Groningen, Netherlands (Jan – Jun 2025).</p></div>
+
+      <div class="when">Mar 2023 – Jun 2024</div>
+      <div class="item"><h3>Outreach Manager, Precious Plastics Monash</h3><p>Led outreach for an eight-student team, running recycling and sustainability workshops for primary, secondary and university audiences.</p></div>
+
+      <div class="when">May 2024</div>
+      <div class="item"><h3>Engineering Intern, Traffix Group</h3><p>Traffic engineering consultancy. I designed carparks, developed swept paths in CAD, and ran on-site traffic surveys.</p></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid">
+      <div class="when">2026 – present</div>
+      <div class="item"><h3>Bipedal walking robot (Robo-Dodo)</h3><p>Simulation and control of a two-legged walking robot, as part of a TUM lab course.</p></div>
+      <div class="when">2026</div>
+      <div class="item"><h3>Battery and power system design (MHAB)</h3><p>Buck converter schematics in LTspice and battery safety experiments for extreme conditions.</p></div>
+      <div class="when">2025</div>
+      <div class="item"><h3>Thin-film Kagome metal growth</h3><p>Molecular beam epitaxy and photoemission analysis. See the <a href="#thesis">thesis</a> above.</p></div>
+    </div>
+  </section>
+
+  <section id="resume">
+    <h2>Resume</h2>
+    <p>One page covering education, experience and skills.</p>
+    <a class="btn main" href="resume.pdf">Download resume (PDF)</a>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email me at <a href="mailto:isabelmbrindley@gmail.com">isabelmbrindley@gmail.com</a>, or find my code on <a href="https://github.com/IsabelMBrindley">GitHub</a>.</p>
+  </section>
+
+  <footer>© <span id="y"></span> Isabel Brindley. Munich, Germany.</footer>
+</div>
+
+<script>
+document.getElementById('y').textContent = new Date().getFullYear();
+
+// Finger: three segments, curled once on load
+(function(){
+  var NS='http://www.w3.org/2000/svg', f=document.getElementById('f'), j=document.getElementById('j');
+  var L=[95,70,55], base={x:70,y:250}, reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function draw(t){
+    f.innerHTML=''; j.innerHTML='';
+    var a=-Math.PI/2+0.5, x=base.x, y=base.y, pts=[[x,y]];
+    for(var i=0;i<3;i++){
+      a+=t*(0.55+i*0.25);
+      x+=Math.cos(a)*L[i]; y+=Math.sin(a)*L[i]; pts.push([x,y]);
+    }
+    var p=document.createElementNS(NS,'polyline');
+    p.setAttribute('points',pts.map(function(q){return q.join(',')}).join(' '));
+    f.appendChild(p);
+    pts.slice(0,3).forEach(function(q){
+      var c=document.createElementNS(NS,'circle');
+      c.setAttribute('cx',q[0]);c.setAttribute('cy',q[1]);c.setAttribute('r',10);j.appendChild(c);
+    });
+  }
+  if(reduce){draw(0.9);return;}
+  var start=null,dur=1800;
+  function step(ts){
+    if(!start)start=ts;
+    var k=Math.min((ts-start)/dur,1), e=1-Math.pow(1-k,3);
+    draw(e*0.9);
+    if(k<1)requestAnimationFrame(step);
+  }
+  draw(0);requestAnimationFrame(step);
+})();
+</script>
+</body>
+</html>
