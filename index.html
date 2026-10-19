@@ -56,11 +56,7 @@ h1 span{display:block;color:var(--teal)}
 .btn:hover{border-color:var(--teal);color:var(--teal)}
 .btn.main:hover{background:var(--teal);color:#fff}
 .robot-wrap{margin:0}
-.robot{display:block;width:100%;height:auto;color:var(--teal);cursor:pointer;overflow:visible}
-.callout line{stroke:var(--forest);stroke-width:1.2;stroke-dasharray:3 4}
-.callout circle{fill:var(--rose)}
-.callout .t1{font:700 15px var(--head);fill:var(--forest)}
-.callout .t2{font:500 13px var(--head);fill:var(--muted)}
+.robot{display:block;width:100%;max-width:360px;margin:0 auto;height:auto;color:var(--teal);cursor:pointer;overflow:visible}
 .hint{font:500 13px var(--head);color:var(--muted);text-align:center;margin-top:4px}
 
 /* sections: sticky heading on the left */
@@ -79,12 +75,12 @@ section{padding:88px 0;border-bottom:1px solid var(--line)}
 .tile.now h3{color:var(--rose)}
 .tile.now .big{font:800 clamp(24px,2.6vw,32px)/1.1 var(--head);letter-spacing:-.02em;margin:0 0 12px}
 .tile.now p{color:color-mix(in srgb,#fff 82%,var(--forest))}
-.tile.kag{background:#fff;border:1.5px solid var(--line);display:flex;flex-direction:column;transition:border-color .2s}
-.tile.kag:hover{border-color:var(--teal)}
-.tile.kag img{display:block;width:100%;height:auto;margin:0 0 18px}
-.tile.kag h3{color:var(--teal)}
-.tile.kag p{font:600 19px/1.35 var(--head)}
-.tile.kag .go{display:inline-block;margin-top:auto;padding-top:12px;font:700 14px var(--head);color:var(--teal)}
+.tile.kag{background:var(--teal);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;min-height:280px}
+.tile.kag h3{color:var(--cream);position:relative;z-index:1}
+.tile.kag p{max-width:16ch;position:relative;z-index:1;font:600 21px/1.3 var(--head)}
+.tile.kag .go{position:relative;z-index:1;display:inline-block;margin-top:14px;font:700 14px var(--head);color:var(--cream)}
+.tile.kag svg{position:absolute;right:-10px;top:-10px;width:60%;height:calc(100% + 20px);color:var(--cream);opacity:.55;transition:opacity .3s;-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%);mask-image:linear-gradient(90deg,transparent,#000 40%)}
+.tile.kag:hover svg{opacity:.85}
 
 /* timeline with scroll progress */
 .grp{margin-bottom:56px}
@@ -129,14 +125,15 @@ section{padding:88px 0;border-bottom:1px solid var(--line)}
 .ints svg{width:22px;height:22px;fill:none;stroke:var(--rose);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
 /* thesis */
-.thesis{border-radius:22px;overflow:hidden;border:1.5px solid var(--line)}
-.thesis .fig{margin:0;padding:28px 28px 18px;border-bottom:1.5px solid var(--line)}
-.thesis .fig img{display:block;width:100%;height:auto}
-.thesis .fig figcaption{font:500 14px/1.5 var(--head);color:var(--muted);margin-top:14px;max-width:70ch}
-.thesis .txt{padding:30px 28px 32px}
+.thesis{display:grid;grid-template-columns:1.25fr .75fr;border-radius:22px;overflow:hidden;border:1.5px solid var(--line)}
+.thesis .txt{padding:34px}
 .thesis h3{font-size:26px;line-height:1.2;letter-spacing:-.01em;margin-bottom:10px}
 .thesis .meta{font:500 14px var(--head);color:var(--muted);margin:0 0 18px}
-.thesis .txt p{margin:0 0 16px;max-width:64ch}
+.thesis .txt p{margin:0 0 16px;max-width:60ch}
+.thesis .art{background:var(--teal);color:var(--cream);display:flex;align-items:center;justify-content:center;padding:24px;min-height:260px}
+.thesis .art figure{margin:0;width:100%;text-align:center}
+.thesis .art svg{display:block;width:100%;height:auto;max-height:340px}
+.thesis .art figcaption{font:500 13px/1.4 var(--head);margin-top:12px}
 
 /* projects */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -152,6 +149,11 @@ dialog::backdrop{background:rgba(10,51,35,.55);backdrop-filter:blur(3px)}
 dialog h3{font-size:28px;letter-spacing:-.01em;margin-bottom:6px;padding-right:90px}
 dialog .meta{font:500 15px var(--head);color:var(--muted);margin:0 0 18px}
 dialog p{margin:0 0 14px}
+dialog.has-report{width:min(920px,94vw)}
+.report{margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.report h4{font-size:14px;font-weight:700;color:var(--teal);margin:0 0 12px}
+.report iframe{display:block;width:100%;height:62vh;border:1.5px solid var(--line);border-radius:12px;background:var(--cream);margin-bottom:16px}
+@media (max-width:640px){.report iframe{display:none}}
 .x{position:absolute;right:24px;top:24px;font:700 14px var(--head);background:var(--cream);color:var(--ink);border:0;border-radius:999px;padding:8px 16px;cursor:pointer}
 .x:hover{background:var(--rose)}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:0;list-style:none}
@@ -181,12 +183,11 @@ footer{margin-top:72px;font:500 14px var(--head);color:color-mix(in srgb,#fff 55
 
 @media (max-width:900px){
   .hero .wrap{grid-template-columns:1fr;padding-top:36px}
-  .callout{display:none}
-  .robot{max-width:300px;margin:0 auto}
+    .robot{max-width:260px}
   .split{grid-template-columns:1fr;gap:20px}
   .side h2,.side p{position:static}
   .cards{grid-template-columns:1fr 1fr}
-    .thesis{grid-template-columns:1fr}
+  .thesis{grid-template-columns:1fr}
 }
 @media (max-width:640px){
   .top .wrap{height:auto;flex-direction:column;align-items:flex-start;gap:8px;padding-top:10px;padding-bottom:10px}
@@ -196,7 +197,7 @@ footer{margin-top:72px;font:500 14px var(--head);color:color-mix(in srgb,#fff 55
   nav{gap:12px}
   section{padding:64px 0}
   .bento,.skills,.cards,.cgrid,.events{grid-template-columns:1fr}
-  .tile.now,.tile.kag,  .tile.now{grid-row:auto}
+  .tile.now,.tile.kag{min-height:220px}
   .r span{white-space:normal}
   .thesis .txt{padding:24px}
   html{scroll-padding-top:110px}
@@ -224,7 +225,7 @@ footer{margin-top:72px;font:500 14px var(--head);color:color-mix(in srgb,#fff 55
       <a href="#projects">Projects</a>
       <a href="#events">Events</a>
       <a href="#contact">Contact</a>
-      <a class="cta" href="resume.pdf">Resume</a>
+      <a class="cta" href="cv.pdf">CV</a>
     </nav>
   </div>
 </header>
@@ -235,29 +236,12 @@ footer{margin-top:72px;font:500 14px var(--head);color:color-mix(in srgb,#fff 55
       <h1>Isabel <span>Brindley</span></h1>
       <p class="lede">Mechatronics, Robotics and Biomechanical Engineering student at the Technical University of Munich</p>
       <div class="btns">
-        <a class="btn main" href="resume.pdf">Download resume</a>
+        <a class="btn main" href="cv.pdf">Download CV</a>
         <a class="btn" href="#projects">See projects</a>
       </div>
     </div>
     <figure class="robot-wrap">
-      <svg id="robot" class="robot" viewBox="0 0 560 380" role="button" tabindex="0" aria-label="Friendly robot with labels. Press to make it wave.">
-        <g class="callout" aria-hidden="true">
-          <line x1="228" y1="96" x2="150" y2="62"/><circle cx="150" cy="62" r="4"/>
-          <text class="t1" x="140" y="58" text-anchor="end">Physics BSc</text>
-          <text class="t2" x="140" y="76" text-anchor="end">Monash University</text>
-
-          <line x1="270" y1="184" x2="150" y2="196"/><circle cx="150" cy="196" r="4"/>
-          <text class="t1" x="140" y="192" text-anchor="end">Heart set on</text>
-          <text class="t2" x="140" y="210" text-anchor="end">caregiving robots</text>
-
-          <line x1="270" y1="40" x2="392" y2="30"/><circle cx="392" cy="30" r="4"/>
-          <text class="t1" x="402" y="28">Based in Munich</text>
-          <text class="t2" x="402" y="46">via Melbourne &amp; Groningen</text>
-
-          <line x1="290" y1="302" x2="392" y2="300"/><circle cx="392" cy="300" r="4"/>
-          <text class="t1" x="402" y="298">Hands-on hardware</text>
-          <text class="t2" x="402" y="316">Circuits, batteries, CAD</text>
-        </g>
+      <svg id="robot" class="robot" viewBox="100 0 340 372" role="button" tabindex="0" aria-label="Friendly robot. Press to make it wave.">
         <g transform="translate(120 20)" fill="#fff" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M132 232 V282 V324 M168 232 V282 V324" fill="none" stroke-width="10"/>
           <circle cx="132" cy="282" r="7"/><circle cx="168" cy="282" r="7"/>
@@ -301,10 +285,10 @@ footer{margin-top:72px;font:500 14px var(--head);color:color-mix(in srgb,#fff 55
             <p>Started October 2026 in Munich.</p>
           </div>
           <a class="tile kag" href="#thesis">
-            <img src="kagome-structure.png" alt="Crystal structure of TbMn6Sn6 from my thesis, showing the Kagome layer of manganese atoms" loading="lazy">
             <h3>Research</h3>
             <p>Growing thin films of a Kagome metal, one atomic layer at a time</p>
             <span class="go">Read about my thesis</span>
+            <svg class="kagome" viewBox="0 0 300 220" aria-hidden="true"></svg>
           </a>
         </div>
       </div>
@@ -314,7 +298,7 @@ footer{margin-top:72px;font:500 14px var(--head);color:color-mix(in srgb,#fff 55
   <section id="experience">
     <div class="wrap split">
       <div class="side"><h2>Experience</h2><p>Education and work, most recent first.</p></div>
-      <div id="resume">
+      <div id="cv">
         <div class="grp">
           <h3>Education</h3>
           <div class="tl"><i class="fill"></i>
@@ -415,15 +399,17 @@ footer{margin-top:72px;font:500 14px var(--head);color:color-mix(in srgb,#fff 55
     <div class="wrap split">
       <div class="side"><h2>Thesis</h2></div>
       <div class="thesis">
-        <figure class="fig">
-          <img src="kagome-structure.png" alt="Crystal structure of a single unit cell of TbMn6Sn6, highlighting the manganese Kagome layer" loading="lazy">
-          <figcaption>Figure 1 from my thesis: the crystal structure of TbMn<sub>6</sub>Sn<sub>6</sub>. The manganese atoms (red) form the Kagome layer of corner-sharing triangles.</figcaption>
-        </figure>
-        <div class="txt">
+                <div class="txt">
           <h3>Understanding the growth and electronic properties of rare earth Kagome metals</h3>
           <p class="meta">Physics research project (PHS3350), Monash University, supervised by Dr. Mark Edmonds, November 2025</p>
           <p>Kagome metals have atoms arranged in a woven pattern of triangles and hexagons, which makes their electrons behave in unusual ways. This could help build faster, lower-energy computers. I grew ultra-thin crystal films of one of these metals, TbMn<sub>6</sub>Sn<sub>6</sub>, then studied them at the Australian Synchrotron using X-ray and angle-resolved photoemission spectroscopy. The measurements showed early signs of the two features the theory predicts, and an unexpected chemical signal that needs more work to explain.</p>
           <a class="btn main" href="Understanding_the_growth_and_electronic_properties_of_rare_earth_Kagome_metals.pdf">Read the full thesis (PDF)</a>
+        </div>
+        <div class="art">
+          <figure>
+            <svg class="kagome" viewBox="0 0 300 300" aria-hidden="true"></svg>
+            <figcaption>The Kagome lattice: corner-sharing triangles around hexagons</figcaption>
+          </figure>
         </div>
       </div>
     </div>
@@ -435,12 +421,13 @@ footer{margin-top:72px;font:500 14px var(--head);color:color-mix(in srgb,#fff 55
       <div class="cards">
         <button class="card" data-id="mhab"><span class="when">Mar. – Jun. 2026</span><h3>Power system for a high-altitude balloon</h3><p>Circuit design and battery safety testing for extreme conditions.</p><span class="more">Open details</span></button>
         <button class="card" data-id="muon"><span class="when">Monash University</span><h3>Muon lifetime experiment</h3><p>Measuring how long muons live, and what that says about the weak force.</p><span class="more">Open details</span></button>
-        <button class="card" data-id="muon"><span class="when">Monash University</span><h3>Alpha-particle range experiment</h3><p>Measuring the range of alpha-particles emitted from an Americium-241 source. This was achieved by varying the air pressure of the chamber through which they travelled, measuring the final energy and number with a photo-diode and exploring approximation techniques to translate this into range measurements. In order to estimate the number of particles that reached the detector, I developed a skewed-gaussian model and a corresponding integration method to account for the naturally left-skewed data.</p><span class="more">Open details</span></button>
-        <button class="card" data-id="stm"><span class="when">Monash University</span><h3>Audio sampling device</h3><p>High-frequency audio sampling device contructed from three STMs using SPI communication protocol and DMA to increase sampling speed capability.</p><span class="more">Open details</span></button>
+        <button class="card" data-id="alpha"><span class="when">Monash University</span><h3>Alpha-particle range experiment</h3><p>Measuring how far alpha particles from an americium-241 source travel through air.</p><span class="more">Open details</span></button>
+        <button class="card" data-id="stm"><span class="when">Monash University</span><h3>Audio sampling device</h3><p>A high-frequency audio sampler built from three STM32 microcontrollers.</p><span class="more">Open details</span></button>
         <button class="card" data-id="dodo"><span class="when">Starting Oct. 2026</span><h3>Bipedal walking robot</h3><p>Upcoming TUM lab course on simulating and controlling a two-legged robot.</p><span class="more">Open details</span></button>
       </div>
     </div>
   </section>
+
   <section id="events">
     <div class="wrap split">
       <div class="side"><h2>Events</h2><p>Talks, conferences and meetups I’ve been to recently.</p></div>
@@ -453,7 +440,7 @@ footer{margin-top:72px;font:500 14px var(--head);color:color-mix(in srgb,#fff 55
           Newest events go at the top.
         -->
         <article class="ev">
-          <img src="tedxmunchen.jpeg" alt="Photo from Event name" loading="lazy">
+          <img src="tedxmunchen.jpeg" alt="Photo from TEDxMünchen" loading="lazy">
           <div class="ev-txt">
             <span class="ev-date">Oct. 2026</span>
             <h3>TEDxMünchen</h3>
@@ -469,7 +456,7 @@ footer{margin-top:72px;font:500 14px var(--head);color:color-mix(in srgb,#fff 55
             <span class="ev-date">Mar. 2026</span>
             <h3>Google Careers Event</h3>
             <p class="ev-place">Monash University, Melbourne</p>
-            <p> A session with Google on internship applications, covering what recruiters look for and how the hiring process works. It was a useful look at how to present technical projects to industry ahead of applying for internships.</p>
+            <p>A session with Google on internship applications, covering what recruiters look for and how the hiring process works. It was a useful look at how to present technical projects to industry ahead of applying for internships.</p>
           </div>
         </article>
       </div>
@@ -514,18 +501,56 @@ footer{margin-top:72px;font:500 14px var(--head);color:color-mix(in srgb,#fff 55
   <p>Muons are short-lived particles that rain down from cosmic rays. By detecting when they decay and fitting the decay times, you can measure their lifetime and, from that, estimate the Fermi constant, a number that sets the strength of the weak nuclear force.</p>
   <p>I wrote Python scripts to analyse and fit the data, and wrote up the results as a lab report in LaTeX.</p>
   <ul class="tags"><li>Python</li><li>Data fitting</li><li>LaTeX</li><li>Particle physics</li></ul>
+  <!-- Report: put the PDF in a "reports" folder in your repo. If the file isn't there, this part stays hidden. -->
+  <div class="report" data-pdf="reports/muon-lifetime.pdf"></div>
 </template>
-<template id="p-muon">
+<template id="p-alpha">
   <h3 id="dlgtitle">Alpha-particle range experiment</h3>
   <p class="meta">Physics lab (PHS3000), Monash University</p>
-  <p>Muons are short-lived particles that rain down from cosmic rays. By detecting when they decay and fitting the decay times, you can measure their lifetime and, from that, estimate the Fermi constant, a number that sets the strength of the weak nuclear force.</p>
-  <p>I wrote Python scripts to analyse and fit the data, and wrote up the results as a lab report in LaTeX.</p>
-  <ul class="tags"><li>Python</li><li>Data fitting</li><li>LaTeX</li><li>Particle physics</li></ul>
+  <p>Measuring the range of alpha particles emitted from an americium-241 source. This was achieved by varying the air pressure of the chamber through which they travelled, measuring their final energy and number with a photodiode, and exploring approximation techniques to translate this into range measurements.</p>
+  <p>To estimate the number of particles that reached the detector, I developed a skewed-Gaussian model and a corresponding integration method to account for the naturally left-skewed data.</p>
+  <ul class="tags"><li>Python</li><li>Data fitting</li><li>Nuclear physics</li><li>Experimental design</li></ul>
+  <!-- Report: put the PDF in a "reports" folder in your repo. If the file isn't there, this part stays hidden. -->
+  <div class="report" data-pdf="reports/alpha-range.pdf"></div>
+</template>
+<template id="p-stm">
+  <h3 id="dlgtitle">Audio sampling device</h3>
+  <p class="meta">Monash University</p>
+  <p>A high-frequency audio sampling device constructed from three STM32 microcontrollers, using the SPI communication protocol and DMA (direct memory access) to increase sampling speed.</p>
+  <ul class="tags"><li>C</li><li>STM32</li><li>SPI</li><li>DMA</li></ul>
 </template>
 
 <script>
 document.getElementById('y').textContent = new Date().getFullYear();
 var reduceMotion = matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* Kagome lattice: three families of parallel lines, offset so no three ever cross at one point */
+(function(){
+  var NS='http://www.w3.org/2000/svg', r3=Math.sqrt(3), s=40;
+  document.querySelectorAll('svg.kagome').forEach(function(svg){
+    var vb=svg.viewBox.baseVal, W=vb.width, H=vb.height, L=Math.max(W,H)*2;
+    var g=document.createElementNS(NS,'g');
+    g.setAttribute('stroke','currentColor'); g.setAttribute('stroke-width','2'); g.setAttribute('fill','none');
+    [[1,0,0],[0.5,r3/2,0],[0.5,-r3/2,s/2]].forEach(function(d){
+      var nx=-d[1], ny=d[0];
+      for(var k=-20;k<=20;k++){
+        var c=k*s+d[2], px=W/2+nx*c, py=H/2+ny*c, l=document.createElementNS(NS,'line');
+        l.setAttribute('x1',px-d[0]*L); l.setAttribute('y1',py-d[1]*L);
+        l.setAttribute('x2',px+d[0]*L); l.setAttribute('y2',py+d[1]*L);
+        g.appendChild(l);
+      }
+    });
+    svg.appendChild(g);
+    var a=document.createElementNS(NS,'g'); a.setAttribute('fill','var(--rose)');
+    function atom(x,y){ x+=W/2; y+=H/2; if(x>-5&&x<W+5&&y>-5&&y<H+5){var c=document.createElementNS(NS,'circle');c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',4.5);a.appendChild(c);} }
+    for(var i=-14;i<=14;i++){ for(var j=-14;j<=14;j++){
+      var y=i*s;
+      atom((y/2-j*s)*2/r3, y);
+      atom((j*s+s/2-y/2)*2/r3, y);
+    }}
+    svg.appendChild(a);
+  });
+})();
 
 /* Sticky bar border, active nav link */
 (function(){
@@ -578,9 +603,24 @@ var reduceMotion = matchMedia('(prefers-reduced-motion:reduce)').matches;
   document.querySelectorAll('.card').forEach(function(b){
     b.addEventListener('click',function(){
       body.innerHTML=document.getElementById('p-'+b.dataset.id).innerHTML;
+      dlg.classList.remove('has-report');
+      body.querySelectorAll('.report[data-pdf]').forEach(addReport);
       dlg.showModal();
     });
   });
+  /* Show a report preview and an "open" button, but only if the PDF actually exists */
+  function addReport(box){
+    var pdf=box.dataset.pdf;
+    box.hidden=true;
+    fetch(pdf,{method:'HEAD'}).then(function(r){
+      if(!r.ok) return;
+      box.innerHTML='<h4>Lab report</h4>'+
+        '<iframe src="'+pdf+'#view=FitH" title="Lab report preview" loading="lazy"></iframe>'+
+        '<a class="btn main" href="'+pdf+'" target="_blank" rel="noopener">Open the full report (PDF)</a>';
+      box.hidden=false;
+      dlg.classList.add('has-report');
+    }).catch(function(){});
+  }
   document.getElementById('dlgclose').addEventListener('click',function(){dlg.close();});
   dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
 })();
