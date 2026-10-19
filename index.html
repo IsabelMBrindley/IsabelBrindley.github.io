@@ -82,6 +82,34 @@ h3{font:700 20px/1.3 var(--head);margin:0}
 .plain p{margin:0 0 8px}
 .plain p:last-child{margin-bottom:0}
 
+/* institution tags */
+.insts{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0 0 28px;padding:0}
+.inst{display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 16px 0 12px;background:#fff;color:#16201B;border:1px solid var(--sage);border-radius:999px;font:700 14px var(--head);text-decoration:none}
+.inst img{height:28px;width:auto;display:block}
+.inst .nm{display:none}
+.inst.nologo .nm{display:inline}
+.inst.nologo img{display:none}
+.inst:hover{border-color:var(--accent)}
+
+/* skills and interests */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding-left:28px}
+.sk{background:var(--panel);border-left:4px solid var(--sage);border-radius:0 8px 8px 0;padding:18px 20px}
+.sk.wide{grid-column:1/-1}
+.sk h4{font:700 13px var(--head);letter-spacing:.12em;text-transform:uppercase;color:var(--link);margin:0 0 12px}
+.chips,.ints,.lang{list-style:none;margin:0;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips li{font:500 14px var(--head);background:var(--bg);border:1px solid var(--sage);border-radius:999px;padding:5px 14px}
+.chips li:hover{border-color:var(--accent);background:var(--accent);color:var(--forest)}
+.lang li{display:grid;grid-template-columns:1fr auto;gap:4px 12px;margin-bottom:12px;font:500 15px var(--head)}
+.lang li:last-child{margin-bottom:0}
+.lang em{font-style:normal;color:var(--muted);font-size:14px}
+.bar{grid-column:1/-1;display:block;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.bar::after{content:"";display:block;height:100%;width:var(--w);background:var(--sage);border-radius:3px}
+.ints{display:flex;flex-wrap:wrap;gap:12px}
+.ints li{display:flex;align-items:center;gap:10px;font:500 15px var(--head);background:var(--bg);border:1px solid var(--sage);border-radius:10px;padding:10px 16px}
+.ints svg{width:22px;height:22px;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:720px){.skills{grid-template-columns:1fr;padding-left:20px}}
+
 /* projects */
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
 .card{all:unset;box-sizing:border-box;cursor:pointer;display:block;background:var(--panel);border-left:4px solid var(--sage);border-radius:0 8px 8px 0;padding:20px 22px}
@@ -126,6 +154,10 @@ footer{padding:40px 0 64px;border-top:1px solid var(--line);color:var(--muted);f
     <div>
       <h1>Isabel Brindley</h1>
       <p class="lede">Mechatronics, Robotics and Biomechanical Engineering student at the Technical University of Munich</p>
+      <ul class="insts" aria-label="Institutions">
+        <li class="inst nologo" id="tumtag"><img src="tum-logo.png" alt="Technical University of Munich" onload="this.parentNode.classList.remove('nologo')"><span class="nm">Technical University of Munich</span></li>
+        <li class="inst"><img src="monash-logo.png" alt="Monash University"></li>
+      </ul>
       <div class="btns">
         <a class="btn main" href="resume.pdf">Download resume</a>
       </div>
@@ -167,7 +199,7 @@ footer{padding:40px 0 64px;border-top:1px solid var(--line);color:var(--muted);f
       <div class="grp">
         <h3>Education</h3>
         <div class="e">
-          <div class="r"><div class="org"><img class="logo" src="tum-logo.png" alt="Technical University of Munich logo" onerror="this.style.display='none'"><b>Technical University of Munich</b></div><span>Oct. 2026 – Present</span></div>
+          <div class="r"><div class="org"><b>Technical University of Munich</b></div><span>Oct. 2026 – Present</span></div>
           <div class="r"><i>MSc. Mechatronics, Robotics and Biomechanical Engineering</i><i>Munich, Germany</i></div>
           <ul>
             <li>Pursuing topics in Robotics, Control Theory, AI, Dynamics, Programming and Biomechanical engineering to become a competent all-rounder engineer.</li>
@@ -175,7 +207,7 @@ footer{padding:40px 0 64px;border-top:1px solid var(--line);color:var(--muted);f
           </ul>
         </div>
         <div class="e">
-          <div class="r"><div class="org"><img class="logo" src="monash-logo.png" alt="Monash University logo" onerror="this.style.display='none'"><b>Monash University</b></div><span>Jan. 2023 – Jun. 2026</span></div>
+          <div class="r"><div class="org"><b>Monash University</b></div><span>Jan. 2023 – Jun. 2026</span></div>
           <div class="r"><i>Bachelor of Science (Physics)</i><i>Melbourne, Australia</i></div>
           <ul>
             <li>WAM: 81/100 | GPA: 3.4/4.0</li>
@@ -228,12 +260,24 @@ footer{padding:40px 0 64px;border-top:1px solid var(--line);color:var(--muted);f
 
       <div class="grp">
         <h3>Skills &amp; Interests</h3>
-        <div class="plain">
-          <p><b>Programming:</b> Python, C, C++, MATLAB, Wolfram Language, LaTeX</p>
-          <p><b>Hardware &amp; Embedded:</b> Verilog, MIPS Assembly, Arduino</p>
-          <p><b>Software:</b> SolidWorks, Microsoft 365</p>
-          <p><b>Languages:</b> English (Native), French (B2)</p>
-          <p><b>Interests:</b> Bouldering, Hiking, Travelling, Reading</p>
+        <div class="skills">
+          <div class="sk"><h4>Programming</h4><ul class="chips"><li>Python</li><li>C</li><li>C++</li><li>MATLAB</li><li>Wolfram Language</li><li>LaTeX</li></ul></div>
+          <div class="sk"><h4>Hardware &amp; Embedded</h4><ul class="chips"><li>Verilog</li><li>MIPS Assembly</li><li>Arduino</li></ul></div>
+          <div class="sk"><h4>Software</h4><ul class="chips"><li>SolidWorks</li><li>Microsoft 365</li></ul></div>
+          <div class="sk"><h4>Languages</h4>
+            <ul class="lang">
+              <li><span>English</span><em>Native</em><i class="bar" style="--w:100%"></i></li>
+              <li><span>French</span><em>B2</em><i class="bar" style="--w:66%"></i></li>
+            </ul>
+          </div>
+          <div class="sk wide"><h4>Interests</h4>
+            <ul class="ints">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20l6-10 4 6 3-4 5 8z"/><circle cx="17" cy="6" r="2"/></svg>Bouldering</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 20l7-13 4 7 3-4 6 10z"/></svg>Hiking</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>Travelling</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5c4-1 7 0 9 2 2-2 5-3 9-2v14c-4-1-7 0-9 2-2-2-5-3-9-2z M12 7v14"/></svg>Reading</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
