@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Isabel Brindley – Robotics &amp; Biomechatronics</title>
-<meta name="description" content="Physics graduate and robotics master's student at TUM. Resume, thesis and projects.">
+<meta name="description" content="Mechatronics, Robotics and Biomechanical Engineering student at the Technical University of Munich">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
   --body:"Source Serif 4",Georgia,"Times New Roman",serif;
 }
 @media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
+  :root{
     --bg:#121915; --ink:#E6ECE3; --muted:#9BAAA0; --line:#2A362F;
     --moss:#8FBFA3; --accent:#7FA2FF; --panel:#19231D;
   }
@@ -24,6 +24,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 var(--body)}
+body:has(dialog[open]){overflow:hidden}
 a{color:var(--accent);text-underline-offset:3px}
 a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .wrap{max-width:960px;margin:0 auto;padding:0 24px}
@@ -34,38 +35,69 @@ nav a:hover{color:var(--accent)}
 h1{font:800 clamp(44px,8vw,88px)/.98 var(--head);letter-spacing:-.03em;margin:0 0 20px}
 .lede{font-size:21px;max-width:34ch;margin:0 0 28px}
 .btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn{font:700 15px var(--head);padding:12px 20px;border-radius:6px;text-decoration:none;border:2px solid var(--ink);color:var(--ink)}
+.btn{font:700 15px var(--head);padding:12px 20px;border-radius:6px;text-decoration:none;border:2px solid var(--ink);color:var(--ink);display:inline-block}
 .btn.main{background:var(--ink);color:var(--bg)}
 .btn:hover{border-color:var(--accent);color:var(--accent)}
 .btn.main:hover{background:var(--accent);color:#fff}
-.finger{width:100%;height:auto;color:var(--moss)}
+.robot-wrap{margin:0}
+.robot{display:block;width:100%;max-width:340px;height:auto;margin:0 auto;color:var(--moss);cursor:pointer}
+.robot-wrap figcaption{font:500 14px var(--head);color:var(--muted);text-align:center;margin-top:8px}
 section{padding:56px 0;border-top:1px solid var(--line)}
 h2{font:700 30px/1.1 var(--head);letter-spacing:-.01em;margin:0 0 28px}
-.grid{display:grid;grid-template-columns:200px 1fr;gap:12px 32px}
-.when{font:500 15px var(--head);color:var(--muted);padding-top:4px}
-.item{margin-bottom:28px}
-.item h3{font:700 20px var(--head);margin:0 0 4px}
-.item p{margin:0;max-width:62ch}
+h3{font:700 20px/1.3 var(--head);margin:0}
 .panel{background:var(--panel);border-left:4px solid var(--moss);padding:24px 28px;border-radius:0 8px 8px 0}
-.panel h3{font:700 22px var(--head);margin:0 0 8px}
+.panel h3{font-size:22px;margin-bottom:8px}
 .panel p{margin:0 0 14px;max-width:62ch}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding:0;list-style:none}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none}
 .tags li{font:500 14px var(--head);border:1px solid var(--line);padding:4px 12px;border-radius:999px}
+
+/* projects */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.card{all:unset;box-sizing:border-box;cursor:pointer;display:block;background:var(--panel);border-left:4px solid var(--moss);border-radius:0 8px 8px 0;padding:20px 22px}
+.card:hover{border-left-color:var(--accent)}
+.card:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.card .when{font:500 14px var(--head);color:var(--muted)}
+.card h3{margin:4px 0 8px}
+.card p{margin:0;font-size:16px;line-height:1.5}
+.card .more{display:block;margin-top:12px;font:700 14px var(--head);color:var(--accent)}
+dialog{background:var(--bg);color:var(--ink);border:2px solid var(--ink);border-radius:8px;padding:28px;width:min(620px,92vw);max-height:86vh;overflow:auto}
+dialog::backdrop{background:rgba(10,16,12,.55)}
+dialog h3{font-size:26px;margin-bottom:4px}
+dialog .meta{font:500 15px var(--head);color:var(--muted);margin:0 0 16px}
+dialog p{margin:0 0 14px}
+.x{float:right;font:700 15px var(--head);background:none;color:var(--ink);border:2px solid var(--ink);border-radius:6px;padding:6px 14px;cursor:pointer;margin-left:16px}
+.x:hover{border-color:var(--accent);color:var(--accent)}
+
+/* resume */
+.rs h3{margin:36px 0 14px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.rs h3:first-child{margin-top:0}
+.rs .r{display:flex;justify-content:space-between;gap:4px 16px;flex-wrap:wrap}
+.rs .r b{font:700 18px var(--head)}
+.rs .r span{font-size:16px;white-space:nowrap}
+.rs .r i{font-size:16px}
+.rs .e{margin-bottom:22px}
+.rs p{margin:6px 0 0;max-width:72ch}
+.rs ul{margin:6px 0 0;padding-left:22px;max-width:72ch}
+.rs li{margin-bottom:4px}
+.rs .plain p{margin:0 0 6px}
+.contact p{margin:0}
+
 footer{padding:40px 0 64px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
+
 @media (max-width:720px){
   .hero{grid-template-columns:1fr}
-  .grid{grid-template-columns:1fr;gap:2px}
-  .finger{max-width:320px}
+  .robot{max-width:260px}
+  .rs .r span{white-space:normal}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
+
 <div class="wrap">
   <nav aria-label="Main">
     <a href="#about">About</a>
     <a href="#thesis">Thesis</a>
-    <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
     <a href="#resume">Resume</a>
     <a href="#contact">Contact</a>
@@ -74,118 +106,253 @@ footer{padding:40px 0 64px;border-top:1px solid var(--line);color:var(--muted);f
   <header class="hero">
     <div>
       <h1>Isabel Brindley</h1>
-      <p class="lede">Physics graduate studying mechatronics, robotics and biomechanical engineering in Munich.</p>
+      <p class="lede">Mechatronics, Robotics and Biomechanical Engineering student at the Technical University of Munich</p>
       <div class="btns">
         <a class="btn main" href="resume.pdf">Download resume</a>
-        <a class="btn" href="#thesis">Read my thesis</a>
       </div>
     </div>
-    <!-- A three-joint finger that curls once on load: biomimicry in miniature -->
-    <svg class="finger" viewBox="0 0 300 300" role="img" aria-label="A jointed robotic finger curling">
-      <g id="f" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round"></g>
-      <g id="j" fill="var(--bg)" stroke="currentColor" stroke-width="5"></g>
-    </svg>
+    <figure class="robot-wrap">
+      <svg id="robot" class="robot" viewBox="0 0 300 340" role="button" tabindex="0" aria-label="Friendly robot. Press to make it wave.">
+        <g fill="var(--bg)" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M132 232 V282 V324 M168 232 V282 V324" fill="none" stroke-width="10"/>
+          <circle cx="132" cy="282" r="7"/><circle cx="168" cy="282" r="7"/>
+          <rect x="112" y="320" width="38" height="12" rx="6"/><rect x="150" y="320" width="38" height="12" rx="6"/>
+          <rect x="116" y="222" width="68" height="16" rx="8"/>
+          <rect x="108" y="130" width="84" height="98" rx="16"/>
+          <circle cx="150" cy="164" r="9" fill="var(--accent)" stroke="none"/>
+          <rect x="128" y="188" width="44" height="22" rx="4"/>
+          <path d="M138 188 V210 M150 188 V210 M162 188 V210" fill="none" stroke-width="3"/>
+          <g id="ra"><path d="M0 0 V52" fill="none" stroke-width="10"/><circle cx="0" cy="0" r="8"/>
+            <g id="rf"><path d="M0 0 V48" fill="none" stroke-width="10"/><circle cx="0" cy="0" r="7"/><circle cx="0" cy="48" r="9"/></g></g>
+          <g id="la"><path d="M0 0 V52" fill="none" stroke-width="10"/><circle cx="0" cy="0" r="8"/>
+            <g id="lf"><path d="M0 0 V48" fill="none" stroke-width="10"/><circle cx="0" cy="0" r="7"/><circle cx="0" cy="48" r="9"/></g></g>
+          <path d="M150 118 V132" fill="none" stroke-width="8"/>
+          <g id="head">
+            <path d="M150 48 V30" fill="none"/><circle cx="150" cy="22" r="7" fill="var(--accent)"/>
+            <rect x="105" y="48" width="90" height="70" rx="18"/>
+            <circle cx="130" cy="82" r="13"/><circle cx="170" cy="82" r="13"/>
+            <circle id="pl" cx="130" cy="82" r="5.5" fill="var(--accent)" stroke="none"/>
+            <circle id="pr" cx="170" cy="82" r="5.5" fill="var(--accent)" stroke="none"/>
+            <path d="M136 103 Q150 111 164 103" fill="none" stroke-width="4"/>
+          </g>
+        </g>
+      </svg>
+    </figure>
   </header>
 
   <section id="about">
     <h2>About</h2>
-    <p>I'm an Australian physicist who moved to Munich to study Mechatronics, Robotics and Biomechanical Engineering (MRBE) at TUM. I want to build high-tech robots that help people, especially in caregiving and medical settings, and I'm drawn to designs borrowed from how living things move.</p>
-    <p>I've worked on power electronics and battery systems, prototyped hardware for an elderly-care startup, and grown thin-film crystals for a physics research project. Right now I'm working on simulation and control of a bipedal walking robot.</p>
-    <ul class="tags">
-      <li>Robotics</li><li>Biomechatronics</li><li>Biomimicry</li><li>Power electronics</li><li>Python</li><li>C / C++</li><li>MATLAB</li><li>SolidWorks</li>
-    </ul>
+    <p>I’m an Australian physics graduate who moved to Munich to study Mechatronics, Robotics and Biomechanical Engineering (MRBE) at TUM. I have hands-on experience across power electronics, battery systems, hardware prototyping and CAD, gained through a startup developing an AI wearable for elderly care, a multidisciplinary student engineering team and a professional engineering internship. Strong foundation in experimental design, programming and technical writing, with experience leading and coordinating teams. I'm seeking to apply this to high-tech robotics, with a particular interest in biomechatronics and impact-driven applications such as caregiving or environmental purposes. </p>
+  <h3>Education</h3>
+      <div class="e">
+        <div class="r"><b>Technical University of Munich</b><span>Oct. 2026 – Present</span></div>
+        <div class="r"><i>MSc. Mechatronics, Robotics and Biomechanical Engineering</i><i>Munich, Germany</i></div>
+        <ul>
+          <li>Pursuing topics in Robotics, Control Theory, AI, Dynamics, Programming and Biomechanical engineering to become a competent all-rounder engineer.</li>
+          <li>Selected for the Robo-Dodo lab course, working on simulation and control of a bipedal walking robot.</li>
+        </ul>
+      </div>
+      <div class="e">
+        <div class="r"><b>Monash University</b><span>Jan. 2023 – Jun. 2026</span></div>
+        <div class="r"><i>Bachelor of Science (Physics)</i><i>Melbourne, Australia</i></div>
+        <ul>
+          <li>WAM: 81/100 | GPA: 3.4/4.0</li>
+          <li>Areas of study: Physics, Mechtronics Engineering, Computer Science, Mathematics, Astronomy</li>
+          <li>Undertook a research project under the supervision of Dr. Mark Edmonds in materials physics. In my project, titled <i>Understanding the growth and electronic properties of rare earth Kagome metals</i>, I grew thin film samples of rare-earth Kagome metal TbMn<sub>6</sub>Sn<sub>6</sub> with Molecular Beam Epitaxy and analysed their chemical composition and electrical properties using various Photoemission Spectroscopy techniques.</li>
+        </ul>
+      </div>
+      <div class="e">
+        <div class="r"><b>Rijksuniversiteit Groningen (Academic Exchange)</b><span>Jan. 2025 – Jun. 2025</span></div>
+        <div class="r"><i>Bachelor of Science</i><i>Groningen, Netherlands</i></div>
+        <ul><li>Coursework in Particle Physics, Mathematics and Astronomy.</li></ul>
+      </div>
+      <div class="e">
+        <div class="r"><b>Melbourne Girls Grammar</b><span>Graduated Nov. 2022</span></div>
+        <div class="r"><i>VCE</i><i>Melbourne, Australia</i></div>
+        <ul><li>99.65/100.00 ATAR</li></ul>
+      </div>
+      <h3>Professional Experience</h3>
+      <div class="e">
+        <div class="r"><b>Electrical Engineer (Student Team)</b><span>Mar. 2026 – Jun. 2026</span></div>
+        <div class="r"><i>MHAB</i><i>Melbourne, Australia</i></div>
+        <p>During my time with MHAB, a multi-disciplinary student team, I contributed to the power engineering sub-division in developing a flight-ready product. I designed LTspice schematics, including a buck converter, and researched battery configurations for low-pressure, low-temperature environments, weighing safety, cost and efficiency. I also developed battery safety testing experiments, applying physics principles to the risks of operating in extreme conditions.</p>
+      </div>
+      <div class="e">
+        <div class="r"><b>Engineer (Hardware &amp; Product Development)</b><span>Nov. 2025 – Mar. 2026</span></div>
+        <div class="r"><i>Idiom</i><i>Melbourne, Australia</i></div>
+        <p>Worked at the forefront of Idiom, an early-stage startup developing an AI wearable for elderly care. I analysed AI software codebases, researched battery configurations and designed a prototype shell. I also explored the market with the founder and discussed business ideas, contributing to early product and business direction.</p>
+      </div>
+      <div class="e">
+        <div class="r"><b>Engineering Internship</b><span>May 2024</span></div>
+        <div class="r"><i>Traffix Group</i><i>Melbourne, Australia</i></div>
+        <p>To explore a career pathway in Civil Engineering, I undertook an internship with Traffix Group, a traffic engineering consultancy. I designed carparks and developed swept paths using CAD software. I conducted on-site traffic surveys for new housing developments and contributed to traffic reports for proposed developments and infrastructure projects.</p>
+      </div>
+      <div class="e">
+        <div class="r"><b>Outreach Manager (Student Team)</b><span>Mar. 2023 – Jun. 2024</span></div>
+        <div class="r"><i>Precious Plastics Monash</i><i>Melbourne, Australia</i></div>
+        <p>Starting as a team-member and then working up to manager, I was part of a multidisciplinary team of eight students, promoting sustainability and recycling through engineering-based workshops. I delivered presentations to primary, secondary and university audiences, while planning events, managing budgets and liaising with stakeholders across the Monash community.</p>
+      </div>
+
+      <h3>Other Experience</h3>
+      <div class="plain">
+        <div class="r"><b>Store Assistant, ALDI</b><span>Oct. 2023 – Nov. 2025</span></div>
+        <div class="r"><b>Waitress, North Point Cafe</b><span>Nov. 2021 – Jan. 2023</span></div>
+        <div class="r"><b>Team Member, Grill’d</b><span>Jun. 2020 – Nov. 2021</span></div>
+      </div>
+
+      <h3>Skills &amp; Interests</h3>
+      <div class="plain">
+        <p><b>Programming:</b> Python, C, C++, MATLAB, Wolfram Language, LaTeX</p>
+        <p><b>Hardware &amp; Embedded:</b> Verilog, MIPS Assembly, Arduino</p>
+        <p><b>Software:</b> SolidWorks, Microsoft 365</p>
+        <p><b>Languages:</b> English (Native), French (B2)</p>
+        <p><b>Interests:</b> Bouldering, Hiking, Travelling, Reading</p>
+      </div>
+  
   </section>
 
-  <section id="thesis">
+  <section id="bachelor research project">
     <h2>Thesis</h2>
     <div class="panel">
       <h3>Understanding the growth and electronic properties of rare earth Kagome metals</h3>
       <p>Physics research project (PHS3350), Monash University, supervised by Dr. Mark Edmonds, November 2025.</p>
       <p>Kagome metals have atoms arranged in a woven pattern of triangles and hexagons, which makes their electrons behave in unusual ways. This could help build faster, lower-energy computers. I grew ultra-thin crystal films of one of these metals, TbMn<sub>6</sub>Sn<sub>6</sub>, then studied them at the Australian Synchrotron using X-ray and angle-resolved photoemission spectroscopy. The measurements showed early signs of the two features the theory predicts, and an unexpected chemical signal that needs more work to explain.</p>
-      <a href="thesis.pdf">Read the full thesis (PDF)</a>
-    </div>
-  </section>
-
-  <section id="experience">
-    <h2>Experience and education</h2>
-    <div class="grid">
-      <div class="when">Oct 2026 – present</div>
-      <div class="item"><h3>MSc Mechatronics, Robotics and Biomechanical Engineering</h3><p>Technical University of Munich, Germany. Selected for the Robo-Dodo lab course on a bipedal walking robot.</p></div>
-
-      <div class="when">Mar – Jun 2026</div>
-      <div class="item"><h3>Electrical Engineer, MHAB</h3><p>Student engineering team building a flight-ready product. I designed LTspice circuits including a buck converter, researched battery configurations for low-pressure, low-temperature conditions, and developed battery safety tests.</p></div>
-
-      <div class="when">Nov 2025 – Mar 2026</div>
-      <div class="item"><h3>Engineer (Hardware and Product Development), Idiom</h3><p>Early-stage startup building an AI wearable for elderly care. I analysed AI software codebases, researched battery configurations, designed a prototype shell, and helped explore the market with the founder.</p></div>
-
-      <div class="when">Jan 2023 – Jun 2026</div>
-      <div class="item"><h3>BSc Physics, Mathematics minor</h3><p>Monash University, Melbourne, with an exchange semester at the University of Groningen, Netherlands (Jan – Jun 2025).</p></div>
-
-      <div class="when">Mar 2023 – Jun 2024</div>
-      <div class="item"><h3>Outreach Manager, Precious Plastics Monash</h3><p>Led outreach for an eight-student team, running recycling and sustainability workshops for primary, secondary and university audiences.</p></div>
-
-      <div class="when">May 2024</div>
-      <div class="item"><h3>Engineering Intern, Traffix Group</h3><p>Traffic engineering consultancy. I designed carparks, developed swept paths in CAD, and ran on-site traffic surveys.</p></div>
+      <a href="Understanding_the_growth_and_electronic_properties_of_rare_earth_Kagome_metals.pdf">Read the full thesis (PDF)</a>
     </div>
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
-    <div class="grid">
-      <div class="when">2026 – present</div>
-      <div class="item"><h3>Bipedal walking robot (Robo-Dodo)</h3><p>Simulation and control of a two-legged walking robot, as part of a TUM lab course.</p></div>
-      <div class="when">2026</div>
-      <div class="item"><h3>Battery and power system design (MHAB)</h3><p>Buck converter schematics in LTspice and battery safety experiments for extreme conditions.</p></div>
-      <div class="when">2025</div>
-      <div class="item"><h3>Thin-film Kagome metal growth</h3><p>Molecular beam epitaxy and photoemission analysis. See the <a href="#thesis">thesis</a> above.</p></div>
+    <div class="cards">
+      <button class="card" data-id="dodo"><span class="when">2026 – present</span><h3>Bipedal walking robot</h3><p>Simulation and control of a two-legged robot at TUM.</p><span class="more">Open details</span></button>
+      <button class="card" data-id="mhab"><span class="when">Mar. – Jun. 2026</span><h3>Power system for a flight-ready product</h3><p>Circuit design and battery safety testing for extreme conditions.</p><span class="more">Open details</span></button>
+      <button class="card" data-id="muon"><span class="when">Monash University</span><h3>Muon lifetime experiment</h3><p>Measuring how long muons live, and what that says about the weak force.</p><span class="more">Open details</span></button>
+      <button class="card" data-id="stm"><span class="when">Monash University</span><h3>Embedded relay chain</h3><p>Microcontrollers passing messages to each other, with a Python interface.</p><span class="more">Open details</span></button>
+      <button class="card" data-id="idiom"><span class="when">Nov. 2025 – Mar. 2026</span><h3>Wearable prototype shell</h3><p>Hardware design for an AI wearable for elderly care.</p><span class="more">Open details</span></button>
+      <button class="card" data-id="pp"><span class="when">Mar. 2023 – Jun. 2024</span><h3>Sustainability workshops</h3><p>Engineering-based recycling workshops for schools and universities.</p><span class="more">Open details</span></button>
     </div>
-  </section>
-
-  <section id="resume">
-    <h2>Resume</h2>
-    <p>One page covering education, experience and skills.</p>
-    <a class="btn main" href="resume.pdf">Download resume (PDF)</a>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>Email me at <a href="mailto:isabelmbrindley@gmail.com">isabelmbrindley@gmail.com</a>, or find my code on <a href="https://github.com/IsabelMBrindley">GitHub</a>.</p>
+    <div class="contact">
+      <p>Germany/EU: (+49) 152 07126269</p>
+      <p>Australia: (+61) 474 443 173</p>
+      <p><a href="mailto:isabelmbrindley@gmail.com">isabelmbrindley@gmail.com</a></p>
+      <p>81677 München-Bogenhausen, Germany</p>
+    </div>
   </section>
 
-  <footer>© <span id="y"></span> Isabel Brindley. Munich, Germany.</footer>
+  <footer>© <span id="y"></span> Isabel Brindley.</footer>
 </div>
+
+<dialog id="dlg" aria-labelledby="dlgtitle">
+  <button class="x" id="dlgclose" type="button">Close</button>
+  <div id="dlgbody"></div>
+</dialog>
+
+<template id="p-dodo">
+  <h3 id="dlgtitle">Bipedal walking robot</h3>
+  <p class="meta">Robo-Dodo lab course · Technical University of Munich · 2026 – present</p>
+  <p>I was selected for the Robo-Dodo lab course, where I work on simulation and control of a bipedal walking robot. Walking on two legs is a balancing problem: the controller has to keep the robot upright while it keeps falling forward, step after step.</p>
+  <ul class="tags"><li>Robotics</li><li>Control theory</li><li>Simulation</li></ul>
+</template>
+<template id="p-mhab">
+  <h3 id="dlgtitle">Power system for a flight-ready product</h3>
+  <p class="meta">MHAB student engineering team · Mar. 2026 – Jun. 2026</p>
+  <p>As part of the power engineering sub-division of a multi-disciplinary student team, I helped develop a flight-ready product. I designed LTspice schematics, including a buck converter, which steps a battery’s voltage down for the electronics.</p>
+  <p>I also researched battery configurations for low-pressure, low-temperature environments, weighing safety, cost and efficiency, and developed battery safety testing experiments that apply physics principles to the risks of operating in extreme conditions.</p>
+  <ul class="tags"><li>LTspice</li><li>Power electronics</li><li>Battery systems</li><li>Experimental design</li></ul>
+</template>
+<template id="p-muon">
+  <h3 id="dlgtitle">Muon lifetime experiment</h3>
+  <p class="meta">Physics lab (PHS3000) · Monash University</p>
+  <p>Muons are short-lived particles that rain down from cosmic rays. By detecting when they decay and fitting the decay times, you can measure their lifetime and, from that, estimate the Fermi constant, a number that sets the strength of the weak nuclear force.</p>
+  <p>I wrote Python scripts to analyse and fit the data, and wrote up the results as a lab report in LaTeX.</p>
+  <ul class="tags"><li>Python</li><li>Data fitting</li><li>LaTeX</li><li>Particle physics</li></ul>
+</template>
+<template id="p-stm">
+  <h3 id="dlgtitle">Embedded relay chain</h3>
+  <p class="meta">Embedded systems project (ECE2071) · Monash University</p>
+  <p>This project linked STM32 microcontrollers into a chain that relays messages from one board to the next over UART, a simple serial connection. I wrote and debugged the firmware in C using the HAL library, and built a Python interface that talks to the chain over the serial port.</p>
+  <ul class="tags"><li>C</li><li>STM32</li><li>UART</li><li>Python</li></ul>
+</template>
+<template id="p-idiom">
+  <h3 id="dlgtitle">Wearable prototype shell</h3>
+  <p class="meta">Idiom · Nov. 2025 – Mar. 2026</p>
+  <p>Idiom is an early-stage startup developing an AI wearable for elderly care. I designed a prototype shell for the device, researched battery configurations, and analysed the AI software codebases. I also explored the market with the founder, which helped shape early product and business direction.</p>
+  <ul class="tags"><li>Hardware prototyping</li><li>CAD</li><li>Battery systems</li></ul>
+</template>
+<template id="p-pp">
+  <h3 id="dlgtitle">Sustainability workshops</h3>
+  <p class="meta">Precious Plastics Monash · Mar. 2023 – Jun. 2024</p>
+  <p>I joined this eight-student engineering team as a member and became its Outreach Manager. We ran engineering-based workshops on recycling and sustainability, and I presented to primary school, secondary school and university audiences, planned events, managed budgets and worked with stakeholders across Monash.</p>
+  <ul class="tags"><li>Leadership</li><li>Public speaking</li><li>Event planning</li></ul>
+</template>
 
 <script>
 document.getElementById('y').textContent = new Date().getFullYear();
 
-// Finger: three segments, curled once on load
+/* Project details dialog */
 (function(){
-  var NS='http://www.w3.org/2000/svg', f=document.getElementById('f'), j=document.getElementById('j');
-  var L=[95,70,55], base={x:70,y:250}, reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  function draw(t){
-    f.innerHTML=''; j.innerHTML='';
-    var a=-Math.PI/2+0.5, x=base.x, y=base.y, pts=[[x,y]];
-    for(var i=0;i<3;i++){
-      a+=t*(0.55+i*0.25);
-      x+=Math.cos(a)*L[i]; y+=Math.sin(a)*L[i]; pts.push([x,y]);
-    }
-    var p=document.createElementNS(NS,'polyline');
-    p.setAttribute('points',pts.map(function(q){return q.join(',')}).join(' '));
-    f.appendChild(p);
-    pts.slice(0,3).forEach(function(q){
-      var c=document.createElementNS(NS,'circle');
-      c.setAttribute('cx',q[0]);c.setAttribute('cy',q[1]);c.setAttribute('r',10);j.appendChild(c);
+  var dlg=document.getElementById('dlg'), body=document.getElementById('dlgbody');
+  document.querySelectorAll('.card').forEach(function(b){
+    b.addEventListener('click',function(){
+      body.innerHTML=document.getElementById('p-'+b.dataset.id).innerHTML;
+      dlg.showModal();
     });
+  });
+  document.getElementById('dlgclose').addEventListener('click',function(){dlg.close();});
+  dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+})();
+
+/* Humanoid robot: eyes and head follow the pointer, click or Enter makes it wave */
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var svg=$('robot'), head=$('head'), pl=$('pl'), pr=$('pr');
+  var ra=$('ra'), rf=$('rf'), la=$('la'), lf=$('lf');
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var st={hx:0,hy:0,tx:0,ty:0,wave:null}, running=false;
+  function ease(k){k=Math.max(0,Math.min(1,k));return k*k*(3-2*k)}
+  function render(t){
+    var a=-10,b=-8;
+    if(t!==null){
+      var lift=ease(t/450)-ease((t-2500)/450);
+      a=-10-130*lift;
+      b=-8+lift*(-10+30*Math.sin(t/85));
+    }
+    ra.setAttribute('transform','translate(192 148) rotate('+a+')');
+    rf.setAttribute('transform','translate(0 52) rotate('+b+')');
+    la.setAttribute('transform','translate(108 148) rotate(10)');
+    lf.setAttribute('transform','translate(0 52) rotate(8)');
+    head.setAttribute('transform','rotate('+(st.hx*14)+' 150 118)');
+    pl.setAttribute('transform','translate('+(st.hx*4)+' '+(st.hy*3)+')');
+    pr.setAttribute('transform','translate('+(st.hx*4)+' '+(st.hy*3)+')');
   }
-  if(reduce){draw(0.9);return;}
-  var start=null,dur=1800;
-  function step(ts){
-    if(!start)start=ts;
-    var k=Math.min((ts-start)/dur,1), e=1-Math.pow(1-k,3);
-    draw(e*0.9);
-    if(k<1)requestAnimationFrame(step);
+  function tick(ts){
+    var t=null;
+    if(st.wave!==null){t=ts-st.wave; if(t>2950){st.wave=null;t=null;}}
+    st.hx+=(st.tx-st.hx)*0.15; st.hy+=(st.ty-st.hy)*0.15;
+    render(t);
+    if(st.wave!==null||Math.abs(st.tx-st.hx)>0.003||Math.abs(st.ty-st.hy)>0.003) requestAnimationFrame(tick);
+    else running=false;
   }
-  draw(0);requestAnimationFrame(step);
+  function kick(){ if(!running){running=true;requestAnimationFrame(tick);} }
+  function wave(){ if(st.wave===null){st.wave=performance.now();kick();} }
+  render(null);
+  svg.addEventListener('click',wave);
+  svg.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();wave();}
+  });
+  if(reduce) return;
+  addEventListener('pointermove',function(e){
+    var r=svg.getBoundingClientRect();
+    var nx=(e.clientX-(r.left+r.width/2))/(innerWidth*0.4);
+    var ny=(e.clientY-(r.top+r.height*0.3))/(innerHeight*0.4);
+    st.tx=Math.max(-1,Math.min(1,nx)); st.ty=Math.max(-1,Math.min(1,ny));
+    kick();
+  },{passive:true});
+  setTimeout(wave,600);
 })();
 </script>
 </body>
