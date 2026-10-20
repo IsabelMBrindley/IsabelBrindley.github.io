@@ -64,6 +64,7 @@ section{padding:88px 0;border-bottom:1px solid var(--line)}
 .split{display:grid;grid-template-columns:200px 1fr;gap:48px}
 .side h2{position:sticky;top:104px;font-size:30px;line-height:1.1;letter-spacing:-.01em}
 .side p{position:sticky;top:148px;font:500 14px/1.5 var(--head);color:var(--muted);margin:12px 0 0}
+.sec-h{font-size:30px;line-height:1.1;letter-spacing:-.01em;margin:0 0 28px}
 .intro{font-size:21px;line-height:1.6;max-width:62ch;margin:0 0 40px}
 
 /* highlights bento */
@@ -123,6 +124,36 @@ section{padding:88px 0;border-bottom:1px solid var(--line)}
 .ints{display:flex;flex-wrap:wrap;gap:10px}
 .ints li{display:flex;align-items:center;gap:10px;font:500 15px var(--head);background:#fff;border-radius:12px;padding:10px 16px}
 .ints svg{width:22px;height:22px;fill:none;stroke:var(--rose);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ints li.read{padding:0;background:none}
+.read button{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;font:500 15px var(--head);background:#fff;border-radius:12px;padding:10px 16px;cursor:pointer;border:1.5px dashed var(--rose);transition:background .15s}
+.read button:hover{background:color-mix(in srgb,var(--rose) 22%,#fff)}
+.read button:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.read .peek{font-size:13px;color:var(--teal);font-weight:700}
+
+/* coffee corner pop-up */
+#coffee{width:min(620px,92vw)}
+#coffee h4{font-size:15px;color:var(--teal);margin:0 0 12px}
+.now{display:flex;gap:20px;align-items:flex-start;background:var(--cream);border-radius:16px;padding:20px;margin:6px 0 26px}
+.now .cover{width:96px;height:auto;border-radius:6px;box-shadow:0 4px 14px rgba(10,51,35,.2);flex:none}
+.now .label{font:700 12px var(--head);color:var(--teal);background:#fff;padding:3px 10px;border-radius:999px}
+#coffee .now h4{font-size:22px;color:var(--forest);margin:12px 0 2px}
+.now .author{font:500 15px var(--head);color:var(--muted);margin:0 0 8px}
+.now .why{font-size:16px;line-height:1.5;margin:0}
+.fields{display:grid;grid-template-columns:3fr 2fr;gap:10px;margin-bottom:12px}
+.fields label{display:flex;flex-direction:column;gap:4px;font:500 13px var(--head);color:var(--muted)}
+.fields input{font:400 16px var(--body);color:var(--ink);padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+.fields input:focus{outline:none;border-color:var(--teal)}
+.fields .hp{position:absolute;left:-9999px}
+#suggestForm .btn{cursor:pointer;font-size:14px;padding:10px 18px}
+#suggestForm .btn:disabled{opacity:.6;cursor:default}
+.status{font:500 14px var(--head);color:var(--teal);margin:10px 0 0;min-height:1em}
+.list-title{margin-top:26px!important;padding-top:20px;border-top:1px solid var(--line)}
+.suggestions{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.suggestions li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 12px;background:var(--cream);border-radius:10px;padding:10px 14px}
+.suggestions b{font:700 15px var(--head)}
+.suggestions span{font:500 13px var(--head);color:var(--muted)}
+.empty{font:500 14px var(--head);color:var(--muted);margin:0}
+@media (max-width:640px){.fields{grid-template-columns:1fr}.now{flex-direction:column}.now .cover{width:80px}}
 
 /* thesis */
 .thesis{display:grid;grid-template-columns:1.25fr .75fr;border-radius:22px;overflow:hidden;border:1.5px solid var(--line)}
@@ -300,7 +331,7 @@ footer{margin-top:72px;font:500 14px var(--head);color:color-mix(in srgb,#fff 55
 
   <section id="experience">
     <div class="wrap split">
-      <div class="side"><h2>Experience</h2>
+      <div class="side"><h2>Experience</h2></div>
       <div id="cv">
         <div class="grp">
           <h3>Education</h3>
@@ -391,7 +422,7 @@ footer{margin-top:72px;font:500 14px var(--head);color:color-mix(in srgb,#fff 55
             <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20l6-10 4 6 3-4 5 8z"/><circle cx="17" cy="6" r="2"/></svg>Bouldering</li>
             <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 20l7-13 4 7 3-4 6 10z"/></svg>Hiking</li>
             <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>Travelling</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5c4-1 7 0 9 2 2-2 5-3 9-2v14c-4-1-7 0-9 2-2-2-5-3-9-2z M12 7v14"/></svg>Reading</li>
+            <li class="read"><button type="button" id="coffeeOpen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5c4-1 7 0 9 2 2-2 5-3 9-2v14c-4-1-7 0-9 2-2-2-5-3-9-2z M12 7v14"/></svg>Reading <span class="peek">See what I’m reading</span></button></li>
           </ul>
         </div>
       </div>
@@ -432,7 +463,8 @@ footer{margin-top:72px;font:500 14px var(--head);color:color-mix(in srgb,#fff 55
   </section>
 
   <section id="events">
-    <div class="wrap split">
+    <div class="wrap">
+      <h2 class="sec-h">Events</h2>
       <div class="events">
         <!--
           HOW TO ADD AN EVENT
@@ -482,6 +514,41 @@ footer{margin-top:72px;font:500 14px var(--head);color:color-mix(in srgb,#fff 55
 <dialog id="dlg" aria-labelledby="dlgtitle">
   <button class="x" id="dlgclose" type="button">Close</button>
   <div id="dlgbody"></div>
+</dialog>
+
+<!-- COFFEE CORNER: opens when you click "Reading" under Interests.
+     To change your current book, edit the text inside <div class="now">.
+     For a cover picture, put the image in your repo and set src="book-cover.jpg" (delete the <img> line for no cover). -->
+<dialog id="coffee" aria-labelledby="coffeetitle">
+  <button class="x" type="button" data-close>Close</button>
+  <h3 id="coffeetitle">Coffee corner</h3>
+  <p class="meta">Pull up a chair. Here’s what I’m reading right now, and I’d love a recommendation for what to read next.</p>
+
+  <div class="now">
+    <img src="book.jpeg" alt="" class="cover">
+    <div>
+      <span class="label">Currently reading</span>
+      <h4>Book title</h4>
+      <p class="author">Jacqueline Harpman</p>
+      <p class="why">I love the immersion of this book, it is kind of mundane at times but that it is the point, you feel her suffering and understand the boredom, and then you feel her excitement at the right times too.</p>
+    </div>
+  </div>
+
+  <div class="suggest-area" hidden>
+    <form id="suggestForm" autocomplete="off">
+      <h4>Suggest a book</h4>
+      <div class="fields">
+        <label><span>Book</span><input name="book" required maxlength="120" placeholder="Title and author"></label>
+        <label><span>Your name</span><input name="name" required maxlength="60" placeholder="First name is fine"></label>
+        <label class="hp" aria-hidden="true">Leave empty<input name="website" tabindex="-1"></label>
+      </div>
+      <button class="btn main" type="submit">Send suggestion</button>
+      <p class="status" role="status" aria-live="polite"></p>
+    </form>
+    <h4 class="list-title">Suggested by visitors</h4>
+    <ul class="suggestions" id="suggestions"></ul>
+    <p class="empty" id="suggestEmpty">No suggestions yet. Be the first.</p>
+  </div>
 </dialog>
 
 <script>
@@ -558,6 +625,84 @@ var reduceMotion = matchMedia('(prefers-reduced-motion:reduce)').matches;
       var b=body.querySelector('img'); b.src=img.src; b.alt=img.alt;
       dlg.showModal();
     });
+  });
+})();
+
+/* ===== COFFEE CORNER SETTINGS =====
+   Fill these in once your Google Form is set up (see the instructions Claude gave you).
+   Until they're filled in, the suggestion box stays hidden and only your book shows. */
+var COFFEE = {
+  formAction: '',   // e.g. 'https://docs.google.com/forms/d/e/XXXX/formResponse'
+  bookField:  '',   // e.g. 'entry.123456789'
+  nameField:  '',   // e.g. 'entry.987654321'
+  sheetCSV:   ''    // e.g. 'https://docs.google.com/spreadsheets/d/e/XXXX/pub?output=csv'
+};
+
+(function(){
+  var dlg=document.getElementById('coffee'), open=document.getElementById('coffeeOpen');
+  var area=dlg.querySelector('.suggest-area'), list=document.getElementById('suggestions');
+  var empty=document.getElementById('suggestEmpty'), form=document.getElementById('suggestForm');
+  var status=form.querySelector('.status'), loaded=false;
+  var ready=COFFEE.formAction && COFFEE.bookField && COFFEE.nameField && COFFEE.sheetCSV;
+
+  var cover=dlg.querySelector('.cover');
+  if(cover){ if(cover.complete && cover.naturalWidth===0) cover.remove(); else cover.addEventListener('error',function(){cover.remove();}); }
+
+  open.addEventListener('click',function(){ dlg.showModal(); if(ready && !loaded){ loaded=true; load(); } });
+  dlg.querySelector('[data-close]').addEventListener('click',function(){dlg.close();});
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+  if(!ready) return;
+  area.hidden=false;
+
+  function add(book,name,top){
+    var li=document.createElement('li'), b=document.createElement('b'), s=document.createElement('span');
+    b.textContent=book; s.textContent='suggested by '+name;
+    li.appendChild(b); li.appendChild(s);
+    if(top) list.insertBefore(li,list.firstChild); else list.appendChild(li);
+    empty.hidden=true;
+  }
+  /* Small CSV reader that copes with commas and quotes inside answers */
+  function parseCSV(t){
+    var rows=[],row=[],f='',q=false;
+    for(var i=0;i<t.length;i++){
+      var c=t[i];
+      if(q){ if(c=='"'){ if(t[i+1]=='"'){f+='"';i++;} else q=false; } else f+=c; }
+      else if(c=='"') q=true;
+      else if(c==','){ row.push(f); f=''; }
+      else if(c=='\n'||c=='\r'){ if(c=='\r'&&t[i+1]=='\n') i++; row.push(f); rows.push(row); row=[]; f=''; }
+      else f+=c;
+    }
+    if(f||row.length){ row.push(f); rows.push(row); }
+    return rows;
+  }
+  function load(){
+    fetch(COFFEE.sheetCSV,{cache:'no-store'}).then(function(r){return r.text();}).then(function(t){
+      var rows=parseCSV(t); if(!rows.length) return;
+      var h=rows[0].map(function(x){return x.toLowerCase();});
+      var bi=h.findIndex(function(x){return x.indexOf('book')>-1;}), ni=h.findIndex(function(x){return x.indexOf('name')>-1;});
+      var si=h.findIndex(function(x){return x.trim()==='show';});   // optional approval column
+      if(bi<0) bi=1; if(ni<0) ni=2;
+      rows.slice(1).reverse().forEach(function(r){
+        var book=(r[bi]||'').trim(), name=(r[ni]||'').trim();
+        if(!book) return;
+        if(si>-1 && (r[si]||'').trim().toLowerCase()!=='yes') return;
+        add(book,name||'a visitor',false);
+      });
+    }).catch(function(){});
+  }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(form.website.value) return;   // spam trap
+    var book=form.book.value.trim(), name=form.name.value.trim();
+    if(!book||!name) return;
+    var data=new URLSearchParams(); data.append(COFFEE.bookField,book); data.append(COFFEE.nameField,name);
+    var btn=form.querySelector('button'); btn.disabled=true; status.textContent='Sending…';
+    fetch(COFFEE.formAction,{method:'POST',mode:'no-cors',body:data}).then(function(){
+      add(book,name,true); form.reset();
+      status.textContent='Thank you! Your suggestion is in the list.';
+    }).catch(function(){
+      status.textContent='That didn’t send. Please check your connection and try again.';
+    }).finally(function(){ btn.disabled=false; });
   });
 })();
 
